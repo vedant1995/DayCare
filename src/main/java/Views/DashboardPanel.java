@@ -7,6 +7,7 @@ package Views;
 
 import Model.Admin;
 import java.awt.CardLayout;
+import java.awt.Color;
 import javax.swing.JPanel;
 
 /**
@@ -42,11 +43,16 @@ public class DashboardPanel extends javax.swing.JPanel {
         logoutButton = new javax.swing.JButton();
         userGreetingLabel = new javax.swing.JLabel();
         daycareLabel = new javax.swing.JLabel();
-        navigationPanel = new javax.swing.JTabbedPane();
+        dashboardContainer = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
-        groupsPanel = new javax.swing.JPanel();
-        teachersPanel = new javax.swing.JPanel();
-        studentsPanel = new javax.swing.JPanel();
+        teachersTile = new javax.swing.JPanel();
+        teacherLabelIcon = new javax.swing.JLabel();
+        teachersLabel = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -94,59 +100,115 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         jSplitPane1.setLeftComponent(jPanel1);
 
-        javax.swing.GroupLayout homePanelLayout = new javax.swing.GroupLayout(homePanel);
-        homePanel.setLayout(homePanelLayout);
-        homePanelLayout.setHorizontalGroup(
-            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-        homePanelLayout.setVerticalGroup(
-            homePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
-        );
+        dashboardContainer.setLayout(new java.awt.CardLayout());
 
-        navigationPanel.addTab("Home", homePanel);
+        homePanel.setLayout(new java.awt.GridLayout(2, 3, 10, 10));
 
-        javax.swing.GroupLayout groupsPanelLayout = new javax.swing.GroupLayout(groupsPanel);
-        groupsPanel.setLayout(groupsPanelLayout);
-        groupsPanelLayout.setHorizontalGroup(
-            groupsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-        groupsPanelLayout.setVerticalGroup(
-            groupsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
-        );
+        teachersTile.setBackground(new java.awt.Color(220, 220, 236));
+        teachersTile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        teachersTile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                teachersTileMouseEntered(evt);
+            }
+        });
 
-        navigationPanel.addTab("Groups", groupsPanel);
+        teacherLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/teacher64.png"))); // NOI18N
+        teacherLabelIcon.setToolTipText("");
 
-        javax.swing.GroupLayout teachersPanelLayout = new javax.swing.GroupLayout(teachersPanel);
-        teachersPanel.setLayout(teachersPanelLayout);
-        teachersPanelLayout.setHorizontalGroup(
-            teachersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-        teachersPanelLayout.setVerticalGroup(
-            teachersPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
-        );
+        teachersLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        teachersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        teachersLabel.setText("Teachers");
 
-        navigationPanel.addTab("Teachers", teachersPanel);
-
-        javax.swing.GroupLayout studentsPanelLayout = new javax.swing.GroupLayout(studentsPanel);
-        studentsPanel.setLayout(studentsPanelLayout);
-        studentsPanelLayout.setHorizontalGroup(
-            studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
+        javax.swing.GroupLayout teachersTileLayout = new javax.swing.GroupLayout(teachersTile);
+        teachersTile.setLayout(teachersTileLayout);
+        teachersTileLayout.setHorizontalGroup(
+            teachersTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(teachersTileLayout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(teacherLabelIcon)
+                .addContainerGap(64, Short.MAX_VALUE))
+            .addComponent(teachersLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        studentsPanelLayout.setVerticalGroup(
-            studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 305, Short.MAX_VALUE)
+        teachersTileLayout.setVerticalGroup(
+            teachersTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(teachersTileLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(teacherLabelIcon)
+                .addGap(18, 18, 18)
+                .addComponent(teachersLabel)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
-        navigationPanel.addTab("Students", studentsPanel);
+        homePanel.add(teachersTile);
 
-        jSplitPane1.setRightComponent(navigationPanel);
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 195, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        homePanel.add(jPanel3);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 195, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        homePanel.add(jPanel4);
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 195, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        homePanel.add(jPanel5);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 195, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        homePanel.add(jPanel6);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 195, Short.MAX_VALUE)
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 176, Short.MAX_VALUE)
+        );
+
+        homePanel.add(jPanel7);
+
+        dashboardContainer.add(homePanel, "card2");
+
+        jSplitPane1.setRightComponent(dashboardContainer);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -167,17 +229,27 @@ public class DashboardPanel extends javax.swing.JPanel {
         layout.previous(mainContainer);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void teachersTileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teachersTileMouseEntered
+        // TODO add your handling code here:
+        teachersTile.setBackground(Color.red);
+    }//GEN-LAST:event_teachersTileMouseEntered
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel dashboardContainer;
     private javax.swing.JLabel daycareLabel;
-    private javax.swing.JPanel groupsPanel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JTabbedPane navigationPanel;
-    private javax.swing.JPanel studentsPanel;
-    private javax.swing.JPanel teachersPanel;
+    private javax.swing.JLabel teacherLabelIcon;
+    private javax.swing.JLabel teachersLabel;
+    private javax.swing.JPanel teachersTile;
     private javax.swing.JLabel userGreetingLabel;
     // End of variables declaration//GEN-END:variables
 }
