@@ -64,6 +64,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         logoutButton.setText("Logout");
@@ -110,6 +111,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         dashboardContainer.setLayout(new java.awt.CardLayout());
 
+        homePanel.setBackground(new java.awt.Color(255, 255, 255));
         homePanel.setLayout(new java.awt.GridLayout(2, 3, 10, 10));
 
         teachersTile.setBackground(java.awt.SystemColor.inactiveCaption);
@@ -136,7 +138,7 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(teachersTileLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(teacherLabelIcon)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
             .addComponent(teachersLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         teachersTileLayout.setVerticalGroup(
@@ -156,6 +158,9 @@ public class DashboardPanel extends javax.swing.JPanel {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 studentsTileMouseClicked(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                studentsTileMousePressed(evt);
+            }
         });
 
         studentsLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -166,7 +171,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         studentsTile.setLayout(studentsTileLayout);
         studentsTileLayout.setHorizontalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(studentsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE)
         );
         studentsTileLayout.setVerticalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -200,37 +205,43 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         homePanel.add(jPanel4);
 
+        jPanel5.setBackground(java.awt.SystemColor.inactiveCaption);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addGap(0, 191, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGap(0, 161, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel5);
+
+        jPanel6.setBackground(java.awt.SystemColor.inactiveCaption);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addGap(0, 191, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGap(0, 161, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel6);
+
+        jPanel7.setBackground(java.awt.SystemColor.inactiveCaption);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addGap(0, 191, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,6 +290,10 @@ public class DashboardPanel extends javax.swing.JPanel {
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
     }//GEN-LAST:event_studentsTileMouseClicked
+
+    private void studentsTileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTileMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentsTileMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
