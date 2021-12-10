@@ -129,6 +129,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         teachersLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         teachersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        teachersLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/teacher64.png"))); // NOI18N
         teachersLabel.setText("Teachers");
 
         javax.swing.GroupLayout teachersTileLayout = new javax.swing.GroupLayout(teachersTile);
@@ -146,9 +147,9 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(teachersTileLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(teacherLabelIcon)
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(teachersLabel)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(52, Short.MAX_VALUE))
         );
 
         homePanel.add(teachersTile);
@@ -258,7 +259,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
