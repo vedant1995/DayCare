@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  * @author vedan
  */
 public class DashboardPanel extends javax.swing.JPanel {
-    
+
     private JPanel mainContainer;
     private Admin admin;
 
@@ -23,10 +23,16 @@ public class DashboardPanel extends javax.swing.JPanel {
      * Creates new form DashboardPanel
      */
     public DashboardPanel(JPanel mainContainer, Admin admin) {
-        initComponents();        
+        initComponents();
         this.mainContainer = mainContainer;
         this.admin = admin;
         userGreetingLabel.setText("Hello, " + admin.getName());
+        // teacherLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/teacher64.png")));
+    }
+
+    private void tileMouseExited(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        this.setBackground(new Color(195, 205, 219));
     }
 
     /**
@@ -49,7 +55,9 @@ public class DashboardPanel extends javax.swing.JPanel {
         teacherLabelIcon = new javax.swing.JLabel();
         teachersLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
+        teachersLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
+        teachersLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
@@ -104,15 +112,17 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         homePanel.setLayout(new java.awt.GridLayout(2, 3, 10, 10));
 
-        teachersTile.setBackground(new java.awt.Color(220, 220, 236));
+        teachersTile.setBackground(java.awt.SystemColor.inactiveCaption);
         teachersTile.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         teachersTile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 teachersTileMouseEntered(evt);
             }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                teachersTileMouseExited(evt);
+            }
         });
 
-        teacherLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/teacher64.png"))); // NOI18N
         teacherLabelIcon.setToolTipText("");
 
         teachersLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -126,7 +136,7 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(teachersTileLayout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(teacherLabelIcon)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
             .addComponent(teachersLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         teachersTileLayout.setVerticalGroup(
@@ -134,35 +144,53 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(teachersTileLayout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(teacherLabelIcon)
-                .addGap(18, 18, 18)
+                .addGap(35, 35, 35)
                 .addComponent(teachersLabel)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         homePanel.add(teachersTile);
+
+        jPanel3.setBackground(java.awt.SystemColor.inactiveCaption);
+
+        teachersLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        teachersLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        teachersLabel1.setText("Students");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addComponent(teachersLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(69, 69, 69)
+                .addComponent(teachersLabel1)
+                .addContainerGap(90, Short.MAX_VALUE))
         );
 
         homePanel.add(jPanel3);
+
+        jPanel4.setBackground(java.awt.SystemColor.inactiveCaption);
+
+        teachersLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        teachersLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        teachersLabel2.setText("Groups");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 195, Short.MAX_VALUE)
+            .addComponent(teachersLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 176, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(teachersLabel2)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         homePanel.add(jPanel4);
@@ -231,8 +259,13 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void teachersTileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teachersTileMouseEntered
         // TODO add your handling code here:
-        teachersTile.setBackground(Color.red);
+        teachersTile.setBackground(Color.WHITE);
     }//GEN-LAST:event_teachersTileMouseEntered
+
+    private void teachersTileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_teachersTileMouseExited
+        // TODO add your handling code here:
+        teachersTile.setBackground(new Color(195, 205, 219));
+    }//GEN-LAST:event_teachersTileMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,6 +282,8 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JButton logoutButton;
     private javax.swing.JLabel teacherLabelIcon;
     private javax.swing.JLabel teachersLabel;
+    private javax.swing.JLabel teachersLabel1;
+    private javax.swing.JLabel teachersLabel2;
     private javax.swing.JPanel teachersTile;
     private javax.swing.JLabel userGreetingLabel;
     // End of variables declaration//GEN-END:variables
