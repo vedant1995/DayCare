@@ -54,8 +54,8 @@ public class DashboardPanel extends javax.swing.JPanel {
         teachersTile = new javax.swing.JPanel();
         teacherLabelIcon = new javax.swing.JLabel();
         teachersLabel = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        teachersLabel1 = new javax.swing.JLabel();
+        studentsTile = new javax.swing.JPanel();
+        studentsLabel = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         teachersLabel2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -151,27 +151,32 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         homePanel.add(teachersTile);
 
-        jPanel3.setBackground(java.awt.SystemColor.inactiveCaption);
+        studentsTile.setBackground(java.awt.SystemColor.inactiveCaption);
+        studentsTile.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                studentsTileMouseClicked(evt);
+            }
+        });
 
-        teachersLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        teachersLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        teachersLabel1.setText("Students");
+        studentsLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        studentsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        studentsLabel.setText("Students");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(teachersLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout studentsTileLayout = new javax.swing.GroupLayout(studentsTile);
+        studentsTile.setLayout(studentsTileLayout);
+        studentsTileLayout.setHorizontalGroup(
+            studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(studentsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        studentsTileLayout.setVerticalGroup(
+            studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentsTileLayout.createSequentialGroup()
                 .addGap(69, 69, 69)
-                .addComponent(teachersLabel1)
+                .addComponent(studentsLabel)
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
-        homePanel.add(jPanel3);
+        homePanel.add(studentsTile);
 
         jPanel4.setBackground(java.awt.SystemColor.inactiveCaption);
 
@@ -267,22 +272,30 @@ public class DashboardPanel extends javax.swing.JPanel {
         teachersTile.setBackground(new Color(195, 205, 219));
     }//GEN-LAST:event_teachersTileMouseExited
 
+    private void studentsTileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTileMouseClicked
+        // TODO add your handling code here:
+        StudentsPanel dp = new StudentsPanel(dashboardContainer);
+        CardLayout layout = (CardLayout) dashboardContainer.getLayout();
+        dashboardContainer.add(dp);
+        layout.next(dashboardContainer);
+    }//GEN-LAST:event_studentsTileMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel dashboardContainer;
     private javax.swing.JLabel daycareLabel;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel studentsLabel;
+    private javax.swing.JPanel studentsTile;
     private javax.swing.JLabel teacherLabelIcon;
     private javax.swing.JLabel teachersLabel;
-    private javax.swing.JLabel teachersLabel1;
     private javax.swing.JLabel teachersLabel2;
     private javax.swing.JPanel teachersTile;
     private javax.swing.JLabel userGreetingLabel;
