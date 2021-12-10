@@ -76,6 +76,11 @@ public class StudentsPanel extends javax.swing.JPanel {
         jLabel1.setText("Students");
 
         addStudentButton.setText("Add student");
+        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStudentButtonActionPerformed(evt);
+            }
+        });
 
         viewStudentButton.setText("View student");
 
@@ -128,6 +133,14 @@ public class StudentsPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
+        // TODO add your handling code here:
+        AddStudentPanel p = new AddStudentPanel(container);
+        CardLayout layout = (CardLayout) container.getLayout();
+        container.add(p);
+        layout.next(container);
+    }//GEN-LAST:event_addStudentButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
