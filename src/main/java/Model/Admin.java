@@ -16,7 +16,7 @@ public class Admin {
      */
     private String name = "Harvey";
     private String username = "admin";
-    private String password = "hello";
+    private String password = "admin";
 
 //    public Admin(String username, String password) {
 //        this.username = username;
