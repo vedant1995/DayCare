@@ -125,31 +125,33 @@ public class DashboardPanel extends javax.swing.JPanel {
             }
         });
 
+        teacherLabelIcon.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        teacherLabelIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        teacherLabelIcon.setText("Teachers");
         teacherLabelIcon.setToolTipText("");
 
         teachersLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         teachersLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        teachersLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Views/teacher64.png"))); // NOI18N
-        teachersLabel.setText("Teachers");
 
         javax.swing.GroupLayout teachersTileLayout = new javax.swing.GroupLayout(teachersTile);
         teachersTile.setLayout(teachersTileLayout);
         teachersTileLayout.setHorizontalGroup(
             teachersTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(teachersTileLayout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(teacherLabelIcon)
-                .addContainerGap(124, Short.MAX_VALUE))
-            .addComponent(teachersLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(teachersTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(teachersLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                    .addComponent(teacherLabelIcon, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         teachersTileLayout.setVerticalGroup(
             teachersTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(teachersTileLayout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(teacherLabelIcon)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(55, 55, 55)
                 .addComponent(teachersLabel)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(teacherLabelIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
         homePanel.add(teachersTile);
