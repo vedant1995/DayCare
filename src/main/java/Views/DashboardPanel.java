@@ -216,7 +216,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         jButton3.setBackground(java.awt.SystemColor.inactiveCaption);
         jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setText("Student registration");
+        jButton3.setText("Registration renewal");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -233,7 +233,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         jButton5.setBackground(java.awt.SystemColor.inactiveCaption);
         jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setText("Upcoming employee reviews");
+        jButton5.setText("Employee reviews");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
