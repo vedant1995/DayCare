@@ -55,7 +55,16 @@ public class Classroom {
         AgeRange[1] = high;
     }
 
+    public void showTeachers(){
+        //System.out.println(TeacherList);
+        if(!TeacherList.isEmpty()){
+            for (Teacher t: TeacherList){
+                t.showStudents();
+                System.out.println(t.getId());
+            }
+        }
 
+    }
 
 
 }

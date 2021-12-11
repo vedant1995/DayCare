@@ -1,5 +1,9 @@
 package Model;
 
+import com.github.javafaker.Faker;
+
+import java.util.Random;
+
 public class TeacherFactory extends AbstractFactory{
     private TeacherFactory(){
 
@@ -12,8 +16,10 @@ public class TeacherFactory extends AbstractFactory{
         return instance;
     }
 
-    public Teacher getObject(int tid){
-        return new Teacher(tid);
+    public Teacher getObject(int tid,int size){
+        Faker faker = new Faker();
+        Random rand = new Random();
+        return new Teacher(tid,size,faker.name().firstName(),faker.name().lastName(),rand.nextInt(20)+20);
     }
 
 }
