@@ -5,7 +5,9 @@
  */
 package Views;
 
+import Controller.ImageHelper;
 import Model.Admin;
+import Model.School;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -29,13 +31,14 @@ import javax.swing.SwingConstants;
 public class DashboardPanel extends javax.swing.JPanel {
 
     private JPanel mainContainer;
+    private School school;
     private Admin admin;
     private Map<JButton, String> buttonIconMap  = new HashMap<>();
 
     /**
      * Creates new form DashboardPanel
      */
-    public DashboardPanel(JPanel mainContainer, Admin admin) {
+    public DashboardPanel(JPanel mainContainer, Admin admin, School school) {
         initComponents();
         
         buttonIconMap.put(studentsButton, "/icons/student.png");
@@ -45,35 +48,17 @@ public class DashboardPanel extends javax.swing.JPanel {
         buttonIconMap.put(registrationButton, "/icons/renewal.png");
         buttonIconMap.put(empReviewButton, "/icons/reviews.png");
         
+        ImageHelper imageHelper = new ImageHelper();
+        
         for(Map.Entry<JButton, String> button : buttonIconMap.entrySet()){
-            scaleandSetTileImage(button.getValue(), button.getKey());
+            imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);            
         }
         // scaleandSetTileImage("/icons/students.png", studentsButton);
         this.mainContainer = mainContainer;
         this.admin = admin;
+        this.school = school;
         userGreetingLabel.setText("Hello, " + admin.getName());
         // teacherLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/teacher64.png")));
-    }
-
-    public void scaleandSetTileImage(String imagePath, JButton button) {
-        System.out.println(imagePath);
-        ImageIcon imageIcon = createImageIcon(imagePath, "Tile image");
-        Image image = imageIcon.getImage();
-        Image newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
-        imageIcon = new ImageIcon(newimg);
-        button.setIcon(imageIcon);
-        button.setVerticalTextPosition(SwingConstants.BOTTOM);
-        button.setHorizontalTextPosition(SwingConstants.CENTER);
-    }
-
-    private ImageIcon createImageIcon(String path, String description) {
-        URL imgURL = getClass().getResource(path);
-        if (imgURL != null) {
-            return new ImageIcon(imgURL, description);
-        } else {
-            System.err.println("Couldn't find file: " + path);
-            return null;
-        }
     }
 
     private void tileMouseExited(java.awt.event.MouseEvent evt) {
@@ -128,7 +113,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         daycareLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         daycareLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        daycareLabel.setText("DAYCARE");
+        daycareLabel.setText("PRUDENTIAL DAYCARE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,8 +121,8 @@ public class DashboardPanel extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(daycareLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(daycareLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
                 .addComponent(userGreetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(logoutButton)
@@ -308,7 +293,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

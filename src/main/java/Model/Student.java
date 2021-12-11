@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 import java.time.LocalDate;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class Student extends AbstractPerson {
     public Student(String csv) {
         Scanner sc = new Scanner(csv);
         sc.useDelimiter(",");
-        try {
+        try {            
             this.Id = sc.nextInt();
             this.Age = sc.nextInt();
             this.FirstName = sc.next();

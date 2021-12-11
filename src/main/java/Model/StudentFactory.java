@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 public class StudentFactory extends AbstractFactory{
     private static StudentFactory instance = null;

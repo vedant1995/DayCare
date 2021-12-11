@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 public abstract class AbstractPerson {
     public abstract int getId();
