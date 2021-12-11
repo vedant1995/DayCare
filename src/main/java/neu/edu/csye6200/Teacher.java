@@ -21,9 +21,13 @@ public class Teacher extends AbstractPerson {
 
 
 
-    public Teacher(int id ){
+
+    public Teacher(int id, int size,String firstName,String lastName,int age ){
         this.Id = id;
-        this.size = 3;
+        this.size = size;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.Age = age;
 
     }
 

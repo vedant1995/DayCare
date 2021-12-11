@@ -1,6 +1,8 @@
 package neu.edu.csye6200;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Student extends AbstractPerson {
     private int Id;
@@ -9,9 +11,11 @@ public class Student extends AbstractPerson {
     private String LastName;
     private int TeacherId;
     private LocalDate LastRegDate;
+    private LocalDate ExpectReNewDate;
     private double GPA;
     private boolean NeedRenew;
     private int ClassId;
+    private List<Vax> VaxList = new ArrayList<>();
 
 
 
@@ -22,6 +26,7 @@ public class Student extends AbstractPerson {
         this.FirstName = item[2];
         this.LastName = item[3];
         this.LastRegDate = LocalDate.parse(item[4]);
+        ExpectReNewDate = LastRegDate.plusYears(1L);
 //        Scanner sc = new Scanner(csv);
 //        sc.useDelimiter(",");
 //        try {
@@ -96,6 +101,10 @@ public class Student extends AbstractPerson {
     public void checkRenew(){
         NeedRenew = LastRegDate.isBefore(LocalDate.now().minusYears(1L));
     }
+
+    public void addVax(Vax v){
+        VaxList.add(v);
+    }
     @Override
     public String toString() {
         return "Student{" +
@@ -105,8 +114,12 @@ public class Student extends AbstractPerson {
                 ", LastName='" + LastName + '\'' +
                 ", TeacherId=" + TeacherId +
                 ", ClassRoomId=" + ClassId +
-                ", ImuDate=" + LastRegDate +
+                ", RegDate=" + LastRegDate +
+                ", NextRenewDate" + ExpectReNewDate+
                 ", NeedRenew=" + NeedRenew +
+                ", Vax=" + VaxList +
                 '}';
     }
+
+
 }
