@@ -48,6 +48,7 @@ public class Landing extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(900, 800));
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setLayout(new java.awt.CardLayout());
@@ -55,8 +56,10 @@ public class Landing extends javax.swing.JFrame {
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         usernameLabel.setBackground(new java.awt.Color(153, 153, 153));
+        usernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         usernameLabel.setText("Username: ");
 
+        usernameText.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         usernameText.setText("admin");
         usernameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -64,12 +67,14 @@ public class Landing extends javax.swing.JFrame {
             }
         });
 
+        passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         passwordLabel.setText("Password:");
 
+        passwordField.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         passwordField.setText("admin");
 
         loginButton.setBackground(new java.awt.Color(51, 19, 245));
-        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        loginButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         loginButton.setForeground(new java.awt.Color(249, 245, 245));
         loginButton.setText("Login");
         loginButton.setBorderPainted(false);
@@ -118,9 +123,9 @@ public class Landing extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Daycare");
+        jLabel1.setText("DAYCARE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,7 +153,7 @@ public class Landing extends javax.swing.JFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+                .addContainerGap(246, Short.MAX_VALUE)
                 .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(138, 138, 138))
         );
@@ -158,7 +163,7 @@ public class Landing extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105)
                 .addComponent(loginPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
 
         mainContainer.add(jLayeredPane1, "card2");
