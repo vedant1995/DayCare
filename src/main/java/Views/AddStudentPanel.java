@@ -5,6 +5,8 @@
  */
 package Views;
 
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -14,6 +16,7 @@ import javax.swing.JPanel;
 public class AddStudentPanel extends javax.swing.JPanel {
 
     JPanel container;
+
     /**
      * Creates new form AddStudentPanel
      */
@@ -65,6 +68,11 @@ public class AddStudentPanel extends javax.swing.JPanel {
         jLabel1.setText("Add new student");
 
         backButton.setText("< Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
         headerPanel.setLayout(headerPanelLayout);
@@ -249,10 +257,37 @@ public class AddStudentPanel extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         /**
-         * 1. Get all the info from the text fields
-         * 2. Use the student factory to get the Student object and populate the information from here
+         * 1. Get all the info from the text fields 2. Use the student factory
+         * to get the Student object and populate the information from here
          */
+
+        String studentFirstName = studentFirstNameText.getText();
+        String studentLastName = studentLastNameText.getText();
+        String stringAge = ageText.getText();
+        if (studentFirstName.equals("") || stringAge.equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Please fill all the fields",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        String address = addressText.getText();
+        String gender = genderCombo.getSelectedItem().toString();
+        try {
+            int age = Integer.parseInt(ageText.getText());
+        } catch (NumberFormatException e) {
+            System.out.println("Cannot parse the provided age");
+        }
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+        container.remove(this);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.previous(container);
+    }//GEN-LAST:event_backButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
