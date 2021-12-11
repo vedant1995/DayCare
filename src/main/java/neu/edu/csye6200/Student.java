@@ -2,7 +2,6 @@ package neu.edu.csye6200;
 
 import java.time.LocalDate;
 import java.util.Scanner;
-import neu.edu.csye6200.AbstractPerson;
 
 public class Student extends AbstractPerson {
     private int Id;
