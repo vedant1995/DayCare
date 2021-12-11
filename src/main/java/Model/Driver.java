@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 import java.util.ArrayList;
 import java.util.List;

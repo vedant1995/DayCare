@@ -5,10 +5,13 @@
  */
 package Views;
 
+import Controller.ImageHelper;
+import Controller.SchoolController;
 import Model.Admin;
 import java.awt.CardLayout;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
+import Model.School;
 
 /**
  *
@@ -17,12 +20,14 @@ import javax.swing.JOptionPane;
 public class Landing extends javax.swing.JFrame {
 
     private Admin admin = new Admin();
-
+    private School school;
     /**
      * Creates new form Welcome
      */
     public Landing() {
         initComponents();
+        SchoolController sc = new SchoolController();
+        this.school = sc.loadSchoolData();
         ImageHelper imageHelper = new ImageHelper();
         // imageHelper.sca
         imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
@@ -163,7 +168,7 @@ public class Landing extends javax.swing.JFrame {
         String password = String.valueOf(passwordField.getPassword());
 
         if (admin.signIn(username, password)) {
-            DashboardPanel dp = new DashboardPanel(mainContainer, admin);
+            DashboardPanel dp = new DashboardPanel(mainContainer, admin, school);
             CardLayout layout = (CardLayout) mainContainer.getLayout();
             mainContainer.add(dp);
             layout.next(mainContainer);
