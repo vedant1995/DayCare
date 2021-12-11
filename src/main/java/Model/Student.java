@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
