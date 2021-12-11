@@ -8,7 +8,19 @@ package Views;
 import Model.Admin;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Image;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -18,16 +30,50 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private JPanel mainContainer;
     private Admin admin;
+    private Map<JButton, String> buttonIconMap  = new HashMap<>();
 
     /**
      * Creates new form DashboardPanel
      */
     public DashboardPanel(JPanel mainContainer, Admin admin) {
         initComponents();
+        
+        buttonIconMap.put(studentsButton, "/icons/student.png");
+        buttonIconMap.put(teachersButton, "/icons/teacher.png");
+        buttonIconMap.put(classroomsButton, "/icons/classroom.png");
+        buttonIconMap.put(immunizationButton, "/icons/immunization.png");
+        buttonIconMap.put(registrationButton, "/icons/renewal.png");
+        buttonIconMap.put(empReviewButton, "/icons/reviews.png");
+        
+        for(Map.Entry<JButton, String> button : buttonIconMap.entrySet()){
+            scaleandSetTileImage(button.getValue(), button.getKey());
+        }
+        // scaleandSetTileImage("/icons/students.png", studentsButton);
         this.mainContainer = mainContainer;
         this.admin = admin;
         userGreetingLabel.setText("Hello, " + admin.getName());
         // teacherLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/teacher64.png")));
+    }
+
+    public void scaleandSetTileImage(String imagePath, JButton button) {
+        System.out.println(imagePath);
+        ImageIcon imageIcon = createImageIcon(imagePath, "Tile image");
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(100, 100, java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+        imageIcon = new ImageIcon(newimg);
+        button.setIcon(imageIcon);
+        button.setVerticalTextPosition(SwingConstants.BOTTOM);
+        button.setHorizontalTextPosition(SwingConstants.CENTER);
+    }
+
+    private ImageIcon createImageIcon(String path, String description) {
+        URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
     }
 
     private void tileMouseExited(java.awt.event.MouseEvent evt) {
@@ -52,17 +98,17 @@ public class DashboardPanel extends javax.swing.JPanel {
         dashboardContainer = new javax.swing.JPanel();
         homePanel = new javax.swing.JPanel();
         studentsTile = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        studentsButton = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
+        teachersButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        classroomsButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
+        immunizationButton = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
+        registrationButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton5 = new javax.swing.JButton();
+        empReviewButton = new javax.swing.JButton();
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -128,12 +174,12 @@ public class DashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton6.setBackground(java.awt.SystemColor.inactiveCaption);
-        jButton6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton6.setText("Students");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        studentsButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        studentsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        studentsButton.setText("Students");
+        studentsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                studentsButtonActionPerformed(evt);
             }
         });
 
@@ -141,23 +187,23 @@ public class DashboardPanel extends javax.swing.JPanel {
         studentsTile.setLayout(studentsTileLayout);
         studentsTileLayout.setHorizontalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         studentsTileLayout.setVerticalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         homePanel.add(studentsTile);
 
         jPanel4.setBackground(java.awt.SystemColor.inactiveCaption);
 
-        jButton4.setBackground(java.awt.SystemColor.inactiveCaption);
-        jButton4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton4.setText("Teachers");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        teachersButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        teachersButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        teachersButton.setText("Teachers");
+        teachersButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                teachersButtonActionPerformed(evt);
             }
         });
 
@@ -165,78 +211,79 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(teachersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(teachersButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel4);
 
         jPanel5.setBackground(java.awt.SystemColor.inactiveCaption);
 
-        jButton1.setBackground(java.awt.SystemColor.inactiveCaption);
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setText("Classrooms");
+        classroomsButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        classroomsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        classroomsButton.setText("Classrooms");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel5);
 
         jPanel6.setBackground(java.awt.SystemColor.inactiveCaption);
 
-        jButton2.setBackground(java.awt.SystemColor.inactiveCaption);
-        jButton2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton2.setText("Immunization anniversaries?");
+        immunizationButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        immunizationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        immunizationButton.setText("Immunization");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(immunizationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(immunizationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel6);
 
         jPanel7.setBackground(java.awt.SystemColor.inactiveCaption);
 
-        jButton3.setBackground(java.awt.SystemColor.inactiveCaption);
-        jButton3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton3.setText("Registration renewal");
+        registrationButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        registrationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        registrationButton.setText("Registration");
+        registrationButton.setToolTipText("");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+            .addComponent(registrationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(registrationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel7);
 
-        jButton5.setBackground(java.awt.SystemColor.inactiveCaption);
-        jButton5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton5.setText("Employee reviews");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        empReviewButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        empReviewButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        empReviewButton.setText("Employee reviews");
+        empReviewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                empReviewButtonActionPerformed(evt);
             }
         });
 
@@ -244,11 +291,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(empReviewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+            .addComponent(empReviewButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel2);
@@ -261,11 +308,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 769, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -288,37 +335,34 @@ public class DashboardPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_studentsTileMousePressed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void empReviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empReviewButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_empReviewButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
         StudentsPanel dp = new StudentsPanel(dashboardContainer);
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_studentsButtonActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void teachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersButtonActionPerformed
         // TODO add your handling code here:
         StudentsPanel dp = new StudentsPanel(dashboardContainer);
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_teachersButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton classroomsButton;
     private javax.swing.JPanel dashboardContainer;
     private javax.swing.JLabel daycareLabel;
+    private javax.swing.JButton empReviewButton;
     private javax.swing.JPanel homePanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton immunizationButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
@@ -327,7 +371,10 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JButton registrationButton;
+    private javax.swing.JButton studentsButton;
     private javax.swing.JPanel studentsTile;
+    private javax.swing.JButton teachersButton;
     private javax.swing.JLabel userGreetingLabel;
     // End of variables declaration//GEN-END:variables
 }

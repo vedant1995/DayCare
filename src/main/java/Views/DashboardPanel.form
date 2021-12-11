@@ -16,12 +16,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" alignment="1" pref="769" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" pref="511" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" alignment="0" pref="453" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -158,17 +158,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton6" alignment="0" pref="269" max="32767" attributes="0"/>
+                          <Component id="studentsButton" alignment="0" pref="242" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton6" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="studentsButton" alignment="0" pref="178" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton6">
+                    <Component class="javax.swing.JButton" name="studentsButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
@@ -179,7 +179,7 @@
                         <Property name="text" type="java.lang.String" value="Students"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="studentsButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -194,17 +194,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton4" alignment="0" pref="269" max="32767" attributes="0"/>
+                          <Component id="teachersButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton4" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="teachersButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton4">
+                    <Component class="javax.swing.JButton" name="teachersButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
@@ -215,7 +215,7 @@
                         <Property name="text" type="java.lang.String" value="Teachers"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="teachersButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -230,17 +230,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="0" pref="269" max="32767" attributes="0"/>
+                          <Component id="classroomsButton" alignment="0" pref="242" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="classroomsButton" alignment="0" pref="178" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton1">
+                    <Component class="javax.swing.JButton" name="classroomsButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
@@ -263,17 +263,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" alignment="0" pref="269" max="32767" attributes="0"/>
+                          <Component id="immunizationButton" alignment="0" pref="242" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton2" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="immunizationButton" alignment="0" pref="178" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="immunizationButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
@@ -281,7 +281,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Immunization anniversaries?"/>
+                        <Property name="text" type="java.lang.String" value="Immunization"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -296,17 +296,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton3" alignment="0" pref="269" max="32767" attributes="0"/>
+                          <Component id="registrationButton" alignment="0" pref="242" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton3" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="registrationButton" alignment="0" pref="178" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton3">
+                    <Component class="javax.swing.JButton" name="registrationButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
@@ -314,7 +314,8 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Segoe UI" size="18" style="0"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="Registration renewal"/>
+                        <Property name="text" type="java.lang.String" value="Registration"/>
+                        <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -324,17 +325,17 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
+                          <Component id="empReviewButton" alignment="0" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton5" alignment="0" pref="207" max="32767" attributes="0"/>
+                          <Component id="empReviewButton" alignment="0" pref="178" max="32767" attributes="0"/>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JButton" name="jButton5">
+                    <Component class="javax.swing.JButton" name="empReviewButton">
                       <Properties>
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                           <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
@@ -345,7 +346,7 @@
                         <Property name="text" type="java.lang.String" value="Employee reviews"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton5ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="empReviewButtonActionPerformed"/>
                       </Events>
                     </Component>
                   </SubComponents>

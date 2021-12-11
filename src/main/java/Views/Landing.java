@@ -23,7 +23,9 @@ public class Landing extends javax.swing.JFrame {
      */
     public Landing() {
         initComponents();
-
+        ImageHelper imageHelper = new ImageHelper();
+        // imageHelper.sca
+        imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
         this.setLocationRelativeTo(null);
     }
 
@@ -35,11 +37,12 @@ public class Landing extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         mainContainer = new javax.swing.JPanel();
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        daycareLabel = new javax.swing.JLabel();
         loginPanel = new javax.swing.JPanel();
         usernameLabel = new javax.swing.JLabel();
         usernameText = new javax.swing.JTextField();
@@ -53,27 +56,24 @@ public class Landing extends javax.swing.JFrame {
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setLayout(new java.awt.CardLayout());
 
-        jLayeredPane1.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagLayout jLayeredPane1Layout = new java.awt.GridBagLayout();
+        jLayeredPane1Layout.columnWidths = new int[] {0, 7, 0};
+        jLayeredPane1Layout.rowHeights = new int[] {0};
+        jLayeredPane1.setLayout(jLayeredPane1Layout);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new javax.swing.BoxLayout(jPanel1, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DAYCARE");
+        daycareLabel.setBackground(new java.awt.Color(255, 255, 255));
+        daycareLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        daycareLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        daycareLabel.setText("PRUDENTIAL DAYCARE");
+        jPanel1.add(daycareLabel);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-        );
-
-        jLayeredPane1.add(jPanel1, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        jLayeredPane1.add(jPanel1, gridBagConstraints);
 
         loginPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -141,7 +141,10 @@ public class Landing extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jLayeredPane1.add(loginPanel, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        jLayeredPane1.add(loginPanel, gridBagConstraints);
 
         mainContainer.add(jLayeredPane1, "card2");
 
@@ -209,7 +212,7 @@ public class Landing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel daycareLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton loginButton;
