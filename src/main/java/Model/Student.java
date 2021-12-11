@@ -1,7 +1,6 @@
 package Model;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Student extends AbstractPerson {
@@ -20,8 +19,7 @@ public class Student extends AbstractPerson {
     public Student(String csv) {
         Scanner sc = new Scanner(csv);
         sc.useDelimiter(",");
-        try {
-            // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
+        try {            
             this.Id = sc.nextInt();
             this.Age = sc.nextInt();
             this.FirstName = sc.next();
