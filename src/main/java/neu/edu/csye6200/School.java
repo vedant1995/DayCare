@@ -67,6 +67,7 @@ public class School {
     private void addToClassroom(Student s){
         for(Classroom c : ClassroomList){
             if (c.inRange(s.getAge())){
+                //System.out.println(s.getId()+"in range");
                 for(Teacher t:c.getTeacherList()){
                     if(t.isEmpty()){
                         s.setClassId(c.getId());
@@ -169,7 +170,11 @@ public class School {
         });
     }
 
-
+    public void showAll(){
+        for (Classroom c: ClassroomList){
+            c.showTeachers();
+        }
+    }
 
 
 

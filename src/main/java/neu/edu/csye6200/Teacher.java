@@ -23,6 +23,7 @@ public class Teacher extends AbstractPerson {
 
     public Teacher(int id ){
         this.Id = id;
+        this.size = 3;
 
     }
 
@@ -79,6 +80,15 @@ public class Teacher extends AbstractPerson {
 
     public boolean isEmpty(){
         return count < size;
+    }
+    public void showStudents(){
+        if(!StudentList.isEmpty()){
+            for (Student s: StudentList){
+                System.out.println(s.getFirstName());
+            }
+
+        }
+
     }
 }
 
