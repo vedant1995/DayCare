@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class Driver {
 		// TODO Auto-generated method stub
 		List<String> CSVList = FileUtil.readFileToString("Student.txt");
 		for(String s: CSVList){
-			System.out.println(s);
+			// System.out.println(s);
 		}
 
 		School neu = new School();

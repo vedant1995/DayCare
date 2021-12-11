@@ -1,4 +1,4 @@
-package neu.edu.csye6200;
+package Model;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
