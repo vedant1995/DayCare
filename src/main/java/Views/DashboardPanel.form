@@ -150,10 +150,6 @@
                       <Color blue="db" green="cd" id="Inactive Caption" palette="2" red="bf" type="palette"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="studentsTileMouseClicked"/>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="studentsTileMousePressed"/>
-                  </Events>
 
                   <Layout>
                     <DimensionLayout dim="0">
