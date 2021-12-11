@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Views.Students;
+package View.Students;
 
-import Views.Students.StudentsPanel;
+import View.Students.StudentsPanel;
 import Model.School;
 import Model.Student;
 import Model.StudentFactory;

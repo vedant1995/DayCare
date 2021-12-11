@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Views.Landing;
+import View.Landing;
 import javax.swing.JPanel;
 
 /**
