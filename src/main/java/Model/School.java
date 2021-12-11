@@ -49,6 +49,14 @@ public class School {
         addToClassroom(s);
 
     }
+    
+    public AbstractPerson findStudentById(int id) {
+        for(AbstractPerson p : StudentList) {
+            if(p.getId() == id)
+                return p;
+        }
+        return null;
+    }
 
 //    private void addToClassroom(Teacher t){
 //        for(Classroom c : ClassroomList){
