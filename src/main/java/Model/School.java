@@ -26,6 +26,16 @@ public class School {
 
     }
 
+    public List<Classroom> getClassroomList() {
+        return ClassroomList;
+    }
+
+    public void setClassroomList(List<Classroom> ClassroomList) {
+        this.ClassroomList = ClassroomList;
+    }
+    
+    
+
     public Teacher generateTeacher(int size) {
         //Teacher t = new Teacher(tid++);
         Teacher t = TeacherFactory.getInstance().getObject(tid++, size);
