@@ -16,13 +16,39 @@ public class Teacher extends AbstractPerson {
     private int count = 0;
     private int size;
 
+    public Double getWage() {
+        return Wage;
+    }
 
+    public void setWage(Double Wage) {
+        this.Wage = Wage;
+    }
 
+    public List<Student> getStudentList() {
+        return StudentList;
+    }
 
+    public void setStudentList(List<Student> StudentList) {
+        this.StudentList = StudentList;
+    }
 
+    public int getCount() {
+        return count;
+    }
 
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-    public Teacher(int id, int size,String firstName,String lastName,int age ){
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public Teacher(int id, int size, String firstName, String lastName, int age) {
         this.Id = id;
         this.size = size;
         this.FirstName = firstName;
@@ -76,18 +102,19 @@ public class Teacher extends AbstractPerson {
 //        return null;
 //    }
 //
-    public void addStudent(Student s){
+    public void addStudent(Student s) {
         StudentList.add(s);
         s.setTid(this.Id);
         count++;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return count < size;
     }
-    public void showStudents(){
-        if(!StudentList.isEmpty()){
-            for (Student s: StudentList){
+
+    public void showStudents() {
+        if (!StudentList.isEmpty()) {
+            for (Student s : StudentList) {
                 System.out.println(s.getFirstName());
             }
 
@@ -95,4 +122,3 @@ public class Teacher extends AbstractPerson {
 
     }
 }
-
