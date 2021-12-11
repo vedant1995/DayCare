@@ -38,12 +38,11 @@ public class StudentsPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (AbstractPerson student : school.getStudentList()) {
-            Object[] row = new Object[5];
+            Object[] row = new Object[4];
             row[0] = student.getId();
             row[1] = student.getAge();
             row[2] = student.getFirstName();
             row[3] = student.getLastName();
-            row[4] = student;
             model.addRow(row);
         }
     }
@@ -81,20 +80,20 @@ public class StudentsPanel extends javax.swing.JPanel {
 
         studentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Age", "Firstname", "Lastname", "Immunization Date"
+                "ID", "Age", "Firstname", "Lastname"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -180,12 +179,15 @@ public class StudentsPanel extends javax.swing.JPanel {
             return;
         }
 
-        AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
-
-        StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent);
-        container.add(studentInfoPanel);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.next(container);
+        int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
+        AbstractPerson selectedStudent = school.findStudentById(studentId);
+        if (selectedStudent != null) {
+            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent);
+            container.add(studentInfoPanel);
+            CardLayout layout = (CardLayout) container.getLayout();
+            layout.next(container);
+        }
+        // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
     }//GEN-LAST:event_viewStudentButtonActionPerformed
 
 
