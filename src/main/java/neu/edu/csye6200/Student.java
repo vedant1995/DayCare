@@ -50,7 +50,6 @@ public class Student extends AbstractPerson {
 
     public void setAge(int age) {
         // TODO Auto-generated method stub
-
     }
 
 
