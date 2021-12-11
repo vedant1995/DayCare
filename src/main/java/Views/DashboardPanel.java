@@ -5,6 +5,7 @@
  */
 package Views;
 
+import Views.Students.StudentsPanel;
 import Controller.ImageHelper;
 import Model.Admin;
 import Model.School;
@@ -33,25 +34,25 @@ public class DashboardPanel extends javax.swing.JPanel {
     private JPanel mainContainer;
     private School school;
     private Admin admin;
-    private Map<JButton, String> buttonIconMap  = new HashMap<>();
+    private Map<JButton, String> buttonIconMap = new HashMap<>();
 
     /**
      * Creates new form DashboardPanel
      */
     public DashboardPanel(JPanel mainContainer, Admin admin, School school) {
         initComponents();
-        
+
         buttonIconMap.put(studentsButton, "/icons/student.png");
         buttonIconMap.put(teachersButton, "/icons/teacher.png");
         buttonIconMap.put(classroomsButton, "/icons/classroom.png");
         buttonIconMap.put(immunizationButton, "/icons/immunization.png");
         buttonIconMap.put(registrationButton, "/icons/renewal.png");
         buttonIconMap.put(empReviewButton, "/icons/reviews.png");
-        
+
         ImageHelper imageHelper = new ImageHelper();
-        
-        for(Map.Entry<JButton, String> button : buttonIconMap.entrySet()){
-            imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);            
+
+        for (Map.Entry<JButton, String> button : buttonIconMap.entrySet()) {
+            imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);
         }
         // scaleandSetTileImage("/icons/students.png", studentsButton);
         this.mainContainer = mainContainer;
@@ -150,14 +151,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         homePanel.setLayout(new java.awt.GridLayout(2, 3, 10, 10));
 
         studentsTile.setBackground(java.awt.SystemColor.inactiveCaption);
-        studentsTile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                studentsTileMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                studentsTileMousePressed(evt);
-            }
-        });
 
         studentsButton.setBackground(java.awt.SystemColor.inactiveCaption);
         studentsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -308,25 +301,13 @@ public class DashboardPanel extends javax.swing.JPanel {
         layout.previous(mainContainer);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void studentsTileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTileMouseClicked
-        // TODO add your handling code here:
-        StudentsPanel dp = new StudentsPanel(dashboardContainer);
-        CardLayout layout = (CardLayout) dashboardContainer.getLayout();
-        dashboardContainer.add(dp);
-        layout.next(dashboardContainer);
-    }//GEN-LAST:event_studentsTileMouseClicked
-
-    private void studentsTileMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_studentsTileMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentsTileMousePressed
-
     private void empReviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empReviewButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_empReviewButtonActionPerformed
 
     private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
-        StudentsPanel dp = new StudentsPanel(dashboardContainer);
+        StudentsPanel dp = new StudentsPanel(dashboardContainer, school);
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
@@ -334,7 +315,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void teachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersButtonActionPerformed
         // TODO add your handling code here:
-        StudentsPanel dp = new StudentsPanel(dashboardContainer);
+        StudentsPanel dp = new StudentsPanel(dashboardContainer, school);
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
