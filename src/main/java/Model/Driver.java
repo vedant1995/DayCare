@@ -35,8 +35,7 @@ public class Driver {
 		}
 		//neu.sortStudentByFirstName();
 		neu.showStudent();
-
-		FileUtil.writeStringToFile(neu.addAllStudentToCSV(),"output.txt");
+                neu.addAllStudentToCSV();		
 
 
 

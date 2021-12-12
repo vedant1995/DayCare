@@ -29,13 +29,14 @@ public class School {
 //        ClassroomList.add(c);
 
     }
-    public List<String> addAllStudentToCSV(){
-        List<String> CSVList = new ArrayList<>();
-        for (Student s: StudentList){
+    public void addAllStudentToCSV(){
+        List<String> CSVList = new ArrayList<>();        
+        for (Student s : StudentList) {
             CSVList.add(s.toCSV());
-        }
-        return CSVList;
+        }        
+        FileUtil.writeStringToFile(CSVList, "Student.txt");
     }
+    
     public void addRatioRule(RatioRule r){
         ratioRules.add(r);
     }
