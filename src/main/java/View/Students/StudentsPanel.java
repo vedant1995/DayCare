@@ -267,7 +267,10 @@ public class StudentsPanel extends javax.swing.JPanel {
 
     private void immunizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_immunizationButtonActionPerformed
         // TODO add your handling code here:
-        
+        ImmunizationPanel rp = new ImmunizationPanel(container, school);
+        CardLayout layout = (CardLayout) container.getLayout();
+        container.add(rp);
+        layout.next(container);
     }//GEN-LAST:event_immunizationButtonActionPerformed
 
 
