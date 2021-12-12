@@ -181,7 +181,8 @@ public class ClassroomsPanel extends javax.swing.JPanel {
         // AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
         for (Classroom classroom : school.getClassroomList()) {
             if (classroom.getId() == classroomId) {
-                ClassroomsInformationPanel classroomInfoPanel = new ClassroomsInformationPanel(container, classroom);
+                // ClassroomsInformationPanel classroomInfoPanel = new ClassroomsInformationPanel(container, classroom);
+                UpdatedClassroomsInformationPanel classroomInfoPanel = new UpdatedClassroomsInformationPanel(container, classroom);
                 container.add(classroomInfoPanel);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);

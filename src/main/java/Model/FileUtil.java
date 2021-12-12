@@ -17,7 +17,7 @@ public class FileUtil {
         try {
             FileReader fr = new FileReader(fileName);
             BufferedReader in= new BufferedReader(fr);
-            System.out.println("BufferedReader: '" + fileName + "'");
+            // System.out.println("BufferedReader: '" + fileName + "'");
             String line = in.readLine();
             while(line != null) {
                 list.add(line);
@@ -40,7 +40,7 @@ public class FileUtil {
             File ofile = new File(fileName);
             ofile.createNewFile();
             BufferedWriter out = new BufferedWriter(new FileWriter(ofile));
-            System.out.println("BufferedWriter: '" + fileName + "'");
+            // System.out.println("BufferedWriter: '" + fileName + "'");
             for(String s:input) {
                 out.write(s);
                 out.write("\r\n");
