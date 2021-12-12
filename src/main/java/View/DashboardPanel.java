@@ -9,6 +9,7 @@ import View.Students.StudentsPanel;
 import Controller.ImageHelper;
 import Model.Admin;
 import Model.School;
+import View.Teachers.TeachersPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -315,7 +316,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void teachersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_teachersButtonActionPerformed
         // TODO add your handling code here:
-        StudentsPanel dp = new StudentsPanel(dashboardContainer, school);
+        TeachersPanel dp = new TeachersPanel(dashboardContainer, school);
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
