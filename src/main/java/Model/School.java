@@ -33,8 +33,6 @@ public class School {
     public void setClassroomList(List<Classroom> ClassroomList) {
         this.ClassroomList = ClassroomList;
     }
-    
-    
 
     public Teacher generateTeacher(int size) {
         //Teacher t = new Teacher(tid++);
@@ -66,6 +64,16 @@ public class School {
         return null;
     }
 
+    // To get teacher specific information in TeacherInformationPanel.java
+    public AbstractPerson findTeacherById(int id) {
+        for (AbstractPerson p : TeacherList) {
+            if (p.getId() == id) {
+                return p;
+            }
+        }
+        return null;
+    }
+
 //    private void addToClassroom(Teacher t){
 //        for(Classroom c : ClassroomList){
 //            if (c.isEmpty()){
@@ -79,7 +87,6 @@ public class School {
 //            }
 //        }
 //    }
-    
     private void addToClassroom(Student s) {
         for (Classroom c : ClassroomList) {
             if (c.inRange(s.getAge())) {
