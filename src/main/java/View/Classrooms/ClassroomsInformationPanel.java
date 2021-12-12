@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.JPanel;
@@ -55,6 +56,8 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
         ChartPanel chartPanel = new ChartPanel(chart);
         classroomChartPanel.setLayout(new java.awt.BorderLayout());
         classroomChartPanel.add(chartPanel, BorderLayout.CENTER);
+        
+        populateClassroomListData();
     }
 
     private JFreeChart createChart(PieDataset dataset) {
@@ -77,19 +80,21 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
 
     public void populateClassroomListData() {
         Vector<String> teachers = new Vector<>();
+        List<Teacher> teachs = new ArrayList<>();
+        
         for (Teacher t : classroom.getTeacherList()) {
             teachers.add(t.getFirstName() + " " + t.getLastName());
+            teachs.add(t);
         }
 
         groupsList.setListData(teachers);
         groupsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         groupsList.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    // int index = cList.locationToIndex(e.get);
-
-                    int teacherId = Integer.parseInt(groupsList.getSelectedValue().toString());
-
+                if (e.getClickCount() == 2) {
+                    int index = groupsList.locationToIndex(e.getPoint());
+                    
+                    int teacherId = teachs.get(index).getId();
                     for (Teacher teacher : classroom.getTeacherList()) {
                         if (teacher.getId() == teacherId) {
                             TeacherInformationPanel teacherInfoPanel = new TeacherInformationPanel(container, teacher);
@@ -304,10 +309,10 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
         container.remove(this);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
-        Component[] componentArray = container.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ClassroomsPanel spanel = (ClassroomsPanel) component;
-        spanel.populateTable();
+        // Component[] componentArray = container.getComponents();
+        // Component component = componentArray[componentArray.length - 1];
+        // ClassroomsPanel spanel = (ClassroomsPanel) component;
+        // spanel.populateTable();
     }//GEN-LAST:event_backButtonActionPerformed
 
 

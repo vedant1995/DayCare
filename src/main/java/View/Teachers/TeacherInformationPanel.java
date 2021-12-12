@@ -247,10 +247,6 @@ public class TeacherInformationPanel extends javax.swing.JPanel {
         container.remove(this);
         CardLayout layout = (CardLayout) container.getLayout();
         layout.previous(container);
-        Component[] componentArray = container.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        TeachersPanel spanel = (TeachersPanel) component;
-        spanel.populateTable();
     }//GEN-LAST:event_backButtonActionPerformed
 
 
