@@ -197,7 +197,8 @@ public class Student extends AbstractPerson {
                 FirstName + "," +
                 LastName + "," +
                 LastRegDate.toString() + "," +
-                parentName + "." +
+                String.valueOf(GPA) + "," +
+                parentName + "," +
                 parentEmail;
     }
 
