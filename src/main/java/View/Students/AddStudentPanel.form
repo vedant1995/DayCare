@@ -156,7 +156,7 @@
                                               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" attributes="0">
                                                   <Component id="addressText" max="32767" attributes="0"/>
-                                                  <Component id="immunizationTextField" min="-2" pref="249" max="-2" attributes="0"/>
+                                                  <Component id="registrationTf" min="-2" pref="249" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -198,7 +198,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                          <Component id="immunizationTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="registrationTf" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -271,10 +271,10 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Immunization date*"/>
+                <Property name="text" type="java.lang.String" value="Registration date*"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="immunizationTextField">
+            <Component class="javax.swing.JTextField" name="registrationTf">
             </Component>
           </SubComponents>
         </Container>
