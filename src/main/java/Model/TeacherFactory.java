@@ -19,7 +19,7 @@ public class TeacherFactory extends AbstractFactory{
     public Teacher getObject(int tid,int size){
         Faker faker = new Faker();
         Random rand = new Random();
-        return new Teacher(tid,size,faker.name().firstName(),faker.name().lastName(),rand.nextInt(20)+20);
+        return new Teacher(tid,size,faker.name().firstName(),faker.name().lastName(),rand.nextInt(20)+20,rand.nextInt(500)+400);
     }
 
 }

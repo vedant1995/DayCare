@@ -5,38 +5,37 @@ import java.util.Comparator;
 import java.util.List;
 
 public class School {
-
     private List<Classroom> ClassroomList = new ArrayList<>();
     private List<AbstractPerson> TeacherList = new ArrayList<>();
     private List<AbstractPerson> StudentList = new ArrayList<>();
     private int tid;
     private int cid;
+    private List<RatioRule> ratioRules = new ArrayList<>();
 
-    public School() {
+
+
+
+
+    public School(){
 
         tid = 0;
         cid = 0;
         //Classroom c = new Classroom();
-        Classroom c = ClassroomFactory.getInstance().getObject(cid++, 0, 35);
-        for (int i = 0; i < 3; i++) {
-            c.addTeacher(generateTeacher(3));
-
-        }
-        ClassroomList.add(c);
+        //Classroom c = ClassroomFactory.getInstance().getObject(cid++,0,35);
+//        for(int i = 0; i < 3; i++){
+//            c.addTeacher(generateTeacher(3));
+//
+//        }
+//        ClassroomList.add(c);
 
     }
-
-    public List<Classroom> getClassroomList() {
-        return ClassroomList;
+    public void addRatioRule(RatioRule r){
+        ratioRules.add(r);
     }
 
-    public void setClassroomList(List<Classroom> ClassroomList) {
-        this.ClassroomList = ClassroomList;
-    }
-
-    public Teacher generateTeacher(int size) {
+    public Teacher generateTeacher(int size){
         //Teacher t = new Teacher(tid++);
-        Teacher t = TeacherFactory.getInstance().getObject(tid++, size);
+        Teacher t = TeacherFactory.getInstance().getObject(tid++,size);
         return t;
     }
 
@@ -47,31 +46,18 @@ public class School {
 //
 //
 //    }
-    public void addStudent(Student s) {
+
+    public void addStudent(Student s){
         StudentList.add(s);
         s.checkRenew();
         addToClassroom(s);
 
     }
-
-    // To get student specific information in StudentInformationPanel.java
+    
     public AbstractPerson findStudentById(int id) {
-        for (AbstractPerson p : StudentList) {
-            if (p.getId() == id) {
+        for(AbstractPerson p : StudentList) {
+            if(p.getId() == id)
                 return p;
-            }
-        }
-        return null;
-    }
-
-    // To get teacher specific information in TeacherInformationPanel.java
-    public AbstractPerson findTeacherById(int id) {
-        System.out.println("Printing in findteacherbyid... teacher list is - > ");
-        for (AbstractPerson p : TeacherList) {            
-            System.out.println(p);
-            if (p.getId() == id) {
-                return p;
-            }
         }
         return null;
     }
@@ -89,12 +75,30 @@ public class School {
 //            }
 //        }
 //    }
-    private void addToClassroom(Student s) {
-        for (Classroom c : ClassroomList) {
-            if (c.inRange(s.getAge())) {
+
+    private void addToClassroom(Student s){
+        if (ClassroomList.isEmpty()){
+            for (RatioRule r:ratioRules){
+                if (r.inRange(s.getAge())){
+                    Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
+                    Teacher t = generateTeacher(r.getSize());
+                    s.setClassId(c.getId());
+                    t.addStudent(s);
+                    for(int i = 0; i < 2; i++){
+                        c.addTeacher(generateTeacher(r.getSize()));
+
+                    }
+                    ClassroomList.add(c);
+                    return;
+
+                }
+            }
+        }
+        for(Classroom c : ClassroomList){
+            if (c.inRange(s.getAge())){
                 //System.out.println(s.getId()+"in range");
-                for (Teacher t : c.getTeacherList()) {
-                    if (t.isEmpty()) {
+                for(Teacher t:c.getTeacherList()){
+                    if(t.isEmpty()){
                         s.setClassId(c.getId());
                         t.addStudent(s);
                         return;
@@ -104,56 +108,72 @@ public class School {
             }
 
         }
-        if (0 < s.getAge() && s.getAge() <= 35) {
-            //Classroom c = new Classroom(cid++,0,35);
-            Classroom c = ClassroomFactory.getInstance().getObject(cid++, 0, 35);
-            Teacher t = generateTeacher(3);
-            s.setClassId(c.getId());
-            t.addStudent(s);
-            for (int i = 0; i < 2; i++) {
-                c.addTeacher(generateTeacher(3));
+        for (RatioRule r:ratioRules){
+            if (r.inRange(s.getAge())){
+                Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
+                Teacher t = generateTeacher(r.getSize());
+                s.setClassId(c.getId());
+                t.addStudent(s);
+                for(int i = 0; i < 2; i++){
+                    c.addTeacher(generateTeacher(r.getSize()));
+
+                }
+                ClassroomList.add(c);
 
             }
-            ClassroomList.add(c);
-        } else if (35 <= s.getAge() && s.getAge() <= 60) {
-            //Classroom c = new Classroom(cid++,35,60);
-            Classroom c = ClassroomFactory.getInstance().getObject(cid++, 35, 60);
-            Teacher t = generateTeacher(3);
-            s.setClassId(c.getId());
-            t.addStudent(s);
-            for (int i = 0; i < 2; i++) {
-                c.addTeacher(generateTeacher(3));
-
-            }
-            ClassroomList.add(c);
-        } else {
-            //Classroom c = new Classroom(cid++,60,9999);
-            Classroom c = ClassroomFactory.getInstance().getObject(cid++, 60, 9999);
-            Teacher t = generateTeacher(3);
-            s.setClassId(c.getId());
-            t.addStudent(s);
-            for (int i = 0; i < 2; i++) {
-                c.addTeacher(generateTeacher(3));
-
-            }
-            ClassroomList.add(c);
         }
+
+//        if (0<s.getAge() && s.getAge()<=35){
+//            //Classroom c = new Classroom(cid++,0,35);
+//            Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
+//            Teacher t = generateTeacher(r.getSize());
+//            s.setClassId(c.getId());
+//            t.addStudent(s);
+//            for(int i = 0; i < 2; i++){
+//                c.addTeacher(generateTeacher(r.getSize()));
+//
+//            }
+//            ClassroomList.add(c);
+//        }
+//        else if(35<=s.getAge() && s.getAge()<=60){
+//            //Classroom c = new Classroom(cid++,35,60);
+//            Classroom c = ClassroomFactory.getInstance().getObject(cid++,35,60);
+//            Teacher t = generateTeacher(3);
+//            s.setClassId(c.getId());
+//            t.addStudent(s);
+//            for(int i = 0; i < 2; i++){
+//                c.addTeacher(generateTeacher(3));
+//
+//            }
+//            ClassroomList.add(c);
+//        }
+//        else{
+//            //Classroom c = new Classroom(cid++,60,9999);
+//            Classroom c = ClassroomFactory.getInstance().getObject(cid++,60,9999);
+//            Teacher t = generateTeacher(3);
+//            s.setClassId(c.getId());
+//            t.addStudent(s);
+//            for(int i = 0; i < 2; i++){
+//                c.addTeacher(generateTeacher(3));
+//
+//            }
+//            ClassroomList.add(c);
+        //}
+
+
+
 
     }
 
-    public void showStudent() {
-        for (AbstractPerson s : StudentList) {
+    public void showStudent(){
+        for (AbstractPerson s : StudentList){
             System.out.println(s);
         }
     }
-
-    public List<AbstractPerson> getStudentList() {
+    public List<AbstractPerson> getStudentList(){
         return StudentList;
     }
 
-    public List<AbstractPerson> getTeachersList() {
-        return TeacherList;
-    }
 
     public void sortStudentByID() {
         StudentList.sort(new Comparator<AbstractPerson>() {
@@ -163,8 +183,9 @@ public class School {
             }
         });
 
-    }
 
+
+    }
     public void sortStudentByAge() {
         StudentList.sort(new Comparator<AbstractPerson>() {
             @Override
@@ -193,10 +214,15 @@ public class School {
         });
     }
 
-    public void showAll() {
-        for (Classroom c : ClassroomList) {
+    public void showAll(){
+        for (Classroom c: ClassroomList){
             c.showTeachers();
         }
     }
+
+
+
+
+
 
 }
