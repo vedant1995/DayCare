@@ -56,6 +56,7 @@ public class School {
 
     }
 
+    // To get student specific information in StudentInformationPanel.java
     public AbstractPerson findStudentById(int id) {
         for (AbstractPerson p : StudentList) {
             if (p.getId() == id) {
@@ -78,6 +79,7 @@ public class School {
 //            }
 //        }
 //    }
+    
     private void addToClassroom(Student s) {
         for (Classroom c : ClassroomList) {
             if (c.inRange(s.getAge())) {
