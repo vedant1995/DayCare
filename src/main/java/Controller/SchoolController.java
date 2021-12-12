@@ -44,6 +44,7 @@ public class SchoolController {
                 }
             }
             neu.addStudent(student);
+            neu.addAllStudentToCSV();            
         }
         return neu;
     }
