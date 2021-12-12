@@ -9,6 +9,7 @@ import View.Students.StudentsPanel;
 import Controller.ImageHelper;
 import Model.Admin;
 import Model.School;
+import View.Registration.RegistrationPanel;
 import View.Teachers.TeachersPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -223,6 +224,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         immunizationButton.setBackground(java.awt.SystemColor.inactiveCaption);
         immunizationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         immunizationButton.setText("Immunization");
+        immunizationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                immunizationButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -241,8 +247,12 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         registrationButton.setBackground(java.awt.SystemColor.inactiveCaption);
         registrationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registrationButton.setText("Registration");
-        registrationButton.setToolTipText("");
+        registrationButton.setText("Registration ");
+        registrationButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrationButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -321,6 +331,18 @@ public class DashboardPanel extends javax.swing.JPanel {
         dashboardContainer.add(dp);
         layout.next(dashboardContainer);
     }//GEN-LAST:event_teachersButtonActionPerformed
+
+    private void immunizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_immunizationButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_immunizationButtonActionPerformed
+
+    private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrationButtonActionPerformed
+        // TODO add your handling code here:
+        RegistrationPanel rp = new RegistrationPanel(dashboardContainer, school);
+        CardLayout layout = (CardLayout) dashboardContainer.getLayout();
+        dashboardContainer.add(rp);
+        layout.next(dashboardContainer);
+    }//GEN-LAST:event_registrationButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
