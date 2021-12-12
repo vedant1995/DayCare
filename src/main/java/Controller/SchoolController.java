@@ -22,9 +22,6 @@ public class SchoolController {
 
     public School loadSchoolData() {
         List<String> CSVList = FileUtil.readFileToString("Student.txt");
-//        for (String s : CSVList) {
-//            System.out.println(s);
-//        }
         List<String> VaxList = FileUtil.readFileToString("Vax.txt");
         List<Vax> vaxes = new ArrayList<>();
         for (String s : VaxList) {
@@ -45,8 +42,7 @@ public class SchoolController {
                 student.addVax(v);
             }
             neu.addStudent(student);
-        }
-        // neu.showAll();
+        }        
         return neu;
     }
 }
