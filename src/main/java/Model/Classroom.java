@@ -43,7 +43,7 @@ public class Classroom {
     }
 
     public boolean inRange(int age){
-        return this.AgeRange[0]<=age && age<=this.AgeRange[1];
+        return this.AgeRange[0]<=age && age<this.AgeRange[1];
     }
 
     public List<Teacher> getTeacherList(){

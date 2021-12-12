@@ -2,6 +2,7 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Teacher extends AbstractPerson {
@@ -11,7 +12,7 @@ public class Teacher extends AbstractPerson {
     //private String Name;
     private String LastName;
     private String FirstName;
-    private Double Wage;
+    private int Wage;
     private List<Student> StudentList = new ArrayList<>();
     private int count = 0;
     private int size;
@@ -22,12 +23,14 @@ public class Teacher extends AbstractPerson {
 
 
 
-    public Teacher(int id, int size,String firstName,String lastName,int age ){
+    public Teacher(int id, int size,String firstName,String lastName,int age,int wage ){
         this.Id = id;
         this.size = size;
         this.FirstName = firstName;
         this.LastName = lastName;
         this.Age = age;
+        //Random r = new Random();
+        this.Wage = wage;
 
     }
 
@@ -52,18 +55,20 @@ public class Teacher extends AbstractPerson {
     @Override
     public int getAge() {
         // TODO Auto-generated method stub
-        return 0;
+        return this.Age;
     }
 
     @Override
     public String getFirstName() {
-        return null;
+        return this.FirstName;
     }
 
     @Override
     public String getLastName() {
-        return null;
+        return this.LastName;
     }
+
+    public int getWage(){return this.Wage;}
 
 //    @Override
 //    public void setName(String name) {

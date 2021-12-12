@@ -16,7 +16,15 @@ public class Driver {
 		for(String s:VaxList){
 			vaxes.add(new Vax(s));
 		}
+		List<String> RatioList = FileUtil.readFileToString("Ratio.txt");
+		List<RatioRule> ratioRules = new ArrayList<>();
+		for(String s: RatioList){
+			ratioRules.add(new RatioRule((s)));
+		}
 		School neu = new School();
+		for (RatioRule r:ratioRules){
+			neu.addRatioRule(r);
+		}
 		for(String s: CSVList){
 			Student student = StudentFactory.getInstance().getObject(s);
 			for(Vax v:vaxes){

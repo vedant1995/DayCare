@@ -27,6 +27,7 @@ public class Student extends AbstractPerson {
         this.LastName = item[3];
         this.LastRegDate = LocalDate.parse(item[4]);
         ExpectReNewDate = LastRegDate.plusYears(1L);
+        this.GPA = Double.parseDouble(item[5]);
 //        Scanner sc = new Scanner(csv);
 //        sc.useDelimiter(",");
 //        try {
@@ -112,6 +113,7 @@ public class Student extends AbstractPerson {
                 ", Age=" + Age +
                 ", FirstName='" + FirstName + '\'' +
                 ", LastName='" + LastName + '\'' +
+                ", GPA=" + GPA +
                 ", TeacherId=" + TeacherId +
                 ", ClassRoomId=" + ClassId +
                 ", RegDate=" + LastRegDate +
