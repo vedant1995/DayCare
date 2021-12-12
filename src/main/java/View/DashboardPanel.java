@@ -93,7 +93,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         classroomsButton = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         immunizationButton = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
+        regContainerPanel = new javax.swing.JPanel();
         registrationButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         empReviewButton = new javax.swing.JButton();
@@ -205,6 +205,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         classroomsButton.setBackground(java.awt.SystemColor.inactiveCaption);
         classroomsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         classroomsButton.setText("Classrooms");
+        classroomsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                classroomsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -243,7 +248,7 @@ public class DashboardPanel extends javax.swing.JPanel {
 
         homePanel.add(jPanel6);
 
-        jPanel7.setBackground(java.awt.SystemColor.inactiveCaption);
+        regContainerPanel.setBackground(java.awt.SystemColor.inactiveCaption);
 
         registrationButton.setBackground(java.awt.SystemColor.inactiveCaption);
         registrationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -254,18 +259,18 @@ public class DashboardPanel extends javax.swing.JPanel {
             }
         });
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout regContainerPanelLayout = new javax.swing.GroupLayout(regContainerPanel);
+        regContainerPanel.setLayout(regContainerPanelLayout);
+        regContainerPanelLayout.setHorizontalGroup(
+            regContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(registrationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        regContainerPanelLayout.setVerticalGroup(
+            regContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(registrationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
         );
 
-        homePanel.add(jPanel7);
+        homePanel.add(regContainerPanel);
 
         empReviewButton.setBackground(java.awt.SystemColor.inactiveCaption);
         empReviewButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -344,6 +349,10 @@ public class DashboardPanel extends javax.swing.JPanel {
         layout.next(dashboardContainer);
     }//GEN-LAST:event_registrationButtonActionPerformed
 
+    private void classroomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classroomsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_classroomsButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton classroomsButton;
@@ -357,9 +366,9 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JPanel regContainerPanel;
     private javax.swing.JButton registrationButton;
     private javax.swing.JButton studentsButton;
     private javax.swing.JPanel studentsTile;

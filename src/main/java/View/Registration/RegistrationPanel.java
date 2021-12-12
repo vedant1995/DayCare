@@ -11,6 +11,7 @@ import Model.Student;
 import View.Students.StudentInformationPanel;
 import java.awt.CardLayout;
 import java.time.LocalDate;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author vedan
  */
 public class RegistrationPanel extends javax.swing.JPanel {
-    
+
     private JPanel container;
     private School school;
 
@@ -32,21 +33,21 @@ public class RegistrationPanel extends javax.swing.JPanel {
         this.school = school;
         populateTable();
     }
-    
+
     public void populateTable() {
         expiredTable.setAutoCreateRowSorter(true);
         DefaultTableModel model = (DefaultTableModel) expiredTable.getModel();
         model.setRowCount(0);
-        
+
         for (AbstractPerson student : school.getStudentList()) {
             Object[] row = new Object[5];
             Student s = (Student) student;
-            row[0] = student.getId();            
+            row[0] = student.getId();
             row[1] = student.getFirstName();
             row[2] = student.getLastName();
             row[3] = s.getLastRegDate().toString();
             row[4] = s.getExpectReNewDate().toString();
-            model.addRow(row);            
+            model.addRow(row);
         }
     }
 
@@ -59,23 +60,12 @@ public class RegistrationPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        viewTeacherButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
-        viewTeacherButton = new javax.swing.JButton();
         notifyButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         expiredTable = new javax.swing.JTable();
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Registrations due for renewal");
-
-        backButton.setText("< Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         viewTeacherButton.setText("Enroll student");
         viewTeacherButton.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +74,19 @@ public class RegistrationPanel extends javax.swing.JPanel {
             }
         });
 
-        notifyButton.setText("Notify parent");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Track registrations");
+
+        backButton.setText("< Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        notifyButton.setText("Send a reminder");
+        notifyButton.setEnabled(false);
         notifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notifyButtonActionPerformed(evt);
@@ -124,12 +126,6 @@ public class RegistrationPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(266, 266, 266)
-                .addComponent(viewTeacherButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(notifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -140,6 +136,10 @@ public class RegistrationPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 30, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(notifyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(333, 333, 333))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,11 +150,9 @@ public class RegistrationPanel extends javax.swing.JPanel {
                     .addComponent(backButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewTeacherButton)
-                    .addComponent(notifyButton))
-                .addGap(37, 37, 37))
+                .addGap(18, 18, 18)
+                .addComponent(notifyButton)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,18 +165,25 @@ public class RegistrationPanel extends javax.swing.JPanel {
 
     private void viewTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTeacherButtonActionPerformed
         // TODO add your handling code here:
-        int selectedRow = expiredTable.getSelectedRow();        
-        
+        int selectedRow = expiredTable.getSelectedRow();
+
         if (selectedRow < 0) {
             return;
         }
-        
+
         int studentId = (int) expiredTable.getValueAt(selectedRow, 0);
         AbstractPerson selectedStudent = school.findStudentById(studentId);
         System.out.println(selectedStudent);
         if (selectedStudent != null) {
             Student s = (Student) selectedStudent;
-            s.setLastRegDate(LocalDate.now());            
+            s.setLastRegDate(LocalDate.now());
+            populateTable();
+            JOptionPane.showMessageDialog(this,
+                    "Updated",
+                    "Success",
+                    JOptionPane.OK_OPTION);
+            return;
+            
         }
         // System.out.println("Teacher not found");        
     }//GEN-LAST:event_viewTeacherButtonActionPerformed
