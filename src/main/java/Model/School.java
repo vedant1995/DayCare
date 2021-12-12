@@ -220,6 +220,38 @@ public class School {
         }
     }
 
+    public List<Classroom> getClassroomList() {
+        return ClassroomList;
+    }
+
+    public void setClassroomList(List<Classroom> ClassroomList) {
+        this.ClassroomList = ClassroomList;
+    }
+
+    public List<AbstractPerson> getTeacherList() {
+        return TeacherList;
+    }
+
+    public void setTeacherList(List<AbstractPerson> TeacherList) {
+        this.TeacherList = TeacherList;
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+
+    public List<RatioRule> getRatioRules() {
+        return ratioRules;
+    }
+
+    public void setRatioRules(List<RatioRule> ratioRules) {
+        this.ratioRules = ratioRules;
+    }
+
 
 
 

@@ -17,6 +17,30 @@ public class Teacher extends AbstractPerson {
     private int count = 0;
     private int size;
 
+    public List<Student> getStudentList() {
+        return StudentList;
+    }
+
+    public void setStudentList(List<Student> StudentList) {
+        this.StudentList = StudentList;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
 
 
 
