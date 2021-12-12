@@ -3,14 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Students;
+package View.Teachers;
 
+import View.Students.*;
 import Model.AbstractPerson;
+import Model.Classroom;
 import Model.School;
 import Model.Student;
+import Model.Teacher;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author vedan
  */
-public class StudentsPanel extends javax.swing.JPanel {
+public class TeachersPanel extends javax.swing.JPanel {
 
     private JPanel container;
     private School school;
@@ -26,7 +32,7 @@ public class StudentsPanel extends javax.swing.JPanel {
     /**
      * Creates new form StudentsPanel
      */
-    public StudentsPanel(JPanel container, School school) {
+    public TeachersPanel(JPanel container, School school) {
         initComponents();
         this.container = container;
         this.school = school;
@@ -34,16 +40,25 @@ public class StudentsPanel extends javax.swing.JPanel {
     }
 
     public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) studentsTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) teachersTable.getModel();
         model.setRowCount(0);
 
-        for (AbstractPerson student : school.getStudentList()) {
-            Object[] row = new Object[4];
-            row[0] = student.getId();
-            row[1] = student.getAge();
-            row[2] = student.getFirstName();
-            row[3] = student.getLastName();
-            model.addRow(row);
+        // TODO: Add wage column to the table
+        for (Classroom classroom
+                : school.getClassroomList()) {
+            List<Teacher> teachers = classroom.getTeacherList();
+            // TODO: Display classroom id associated with the teacher if any?
+            // Map<Teacher, Integer> teacherMap = new HashMap<>();
+            for (Teacher teacher : teachers) {
+                Object[] row = new Object[6];
+                row[0] = teacher.getId();
+                row[1] = teacher.getAge();
+                row[2] = teacher.getFirstName();
+                row[3] = teacher.getLastName();
+                row[4] = teacher.getCount();
+                row[5] = teacher.getSize();
+                model.addRow(row);
+            }
         }
     }
 
@@ -60,10 +75,9 @@ public class StudentsPanel extends javax.swing.JPanel {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        studentsTable = new javax.swing.JTable();
+        teachersTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        viewStudentButton = new javax.swing.JButton();
-        addStudentButton = new javax.swing.JButton();
+        viewTeacherButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
@@ -76,24 +90,24 @@ public class StudentsPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Students");
+        jLabel1.setText("Teachers");
 
-        studentsTable.setModel(new javax.swing.table.DefaultTableModel(
+        teachersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Age", "Firstname", "Lastname"
+                "ID", "Age", "Firstname", "Lastname", "Count", "Size"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -104,23 +118,15 @@ public class StudentsPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(studentsTable);
+        jScrollPane1.setViewportView(teachersTable);
 
-        viewStudentButton.setText("View details");
-        viewStudentButton.addActionListener(new java.awt.event.ActionListener() {
+        viewTeacherButton.setText("View details");
+        viewTeacherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewStudentButtonActionPerformed(evt);
+                viewTeacherButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(viewStudentButton);
-
-        addStudentButton.setText("Add student");
-        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStudentButtonActionPerformed(evt);
-            }
-        });
-        jPanel1.add(addStudentButton);
+        jPanel1.add(viewTeacherButton);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -132,7 +138,7 @@ public class StudentsPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(backButton)
-                        .addGap(104, 104, 104)
+                        .addGap(134, 134, 134)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -163,42 +169,43 @@ public class StudentsPanel extends javax.swing.JPanel {
         layout.previous(container);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
+    private void viewTeacherButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTeacherButtonActionPerformed
         // TODO add your handling code here:
-        AddStudentPanel p = new AddStudentPanel(container, school);
-        CardLayout layout = (CardLayout) container.getLayout();
-        container.add(p);
-        layout.next(container);
-    }//GEN-LAST:event_addStudentButtonActionPerformed
-
-    private void viewStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewStudentButtonActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = studentsTable.getSelectedRow();
+        int selectedRow = teachersTable.getSelectedRow();
 
         if (selectedRow < 0) {
             return;
         }
 
-        int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
-        AbstractPerson selectedStudent = school.findStudentById(studentId);
-        if (selectedStudent != null) {
-            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent);
-            container.add(studentInfoPanel);
-            CardLayout layout = (CardLayout) container.getLayout();
-            layout.next(container);
+        // Get the teacherId of the selected row from the table
+        int teacherId = (int) teachersTable.getValueAt(selectedRow, 0);
+
+        // AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
+
+        for (Classroom classroom : school.getClassroomList()) {
+            List<Teacher> teachers = classroom.getTeacherList();
+            for (Teacher teacher : teachers) {
+                if (teacher.getId() == teacherId) {
+                    TeacherInformationPanel teacherInfoPanel = new TeacherInformationPanel(container, teacher);
+                    container.add(teacherInfoPanel);
+                    CardLayout layout = (CardLayout) container.getLayout();
+                    layout.next(container);
+                    return;
+                }
+            }
         }
+        System.out.println("Teacher not found");
         // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
-    }//GEN-LAST:event_viewStudentButtonActionPerformed
+    }//GEN-LAST:event_viewTeacherButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addStudentButton;
     private javax.swing.JButton backButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable studentsTable;
-    private javax.swing.JButton viewStudentButton;
+    private javax.swing.JTable teachersTable;
+    private javax.swing.JButton viewTeacherButton;
     // End of variables declaration//GEN-END:variables
 }
