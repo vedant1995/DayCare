@@ -38,11 +38,13 @@ public class StudentsPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (AbstractPerson student : school.getStudentList()) {
-            Object[] row = new Object[4];
+            Object[] row = new Object[5];
+            Student s = (Student) student;
             row[0] = student.getId();
             row[1] = student.getAge();
             row[2] = student.getFirstName();
             row[3] = student.getLastName();
+            row[4] = s.getLastRegDate().toString();
             model.addRow(row);
         }
     }
@@ -80,20 +82,20 @@ public class StudentsPanel extends javax.swing.JPanel {
 
         studentsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Age", "Firstname", "Lastname"
+                "ID", "Age", "Firstname", "Lastname", "Registration Date"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {

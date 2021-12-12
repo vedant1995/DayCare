@@ -58,7 +58,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
         idLabel = new javax.swing.JLabel();
         studentFirstNameTf = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        immunizationTextField = new javax.swing.JTextField();
+        registrationTf = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -104,7 +104,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
 
         idLabel.setText("ID*");
 
-        jLabel11.setText("Immunization date*");
+        jLabel11.setText("Registration date*");
 
         javax.swing.GroupLayout contentPanelLayout = new javax.swing.GroupLayout(contentPanel);
         contentPanel.setLayout(contentPanelLayout);
@@ -141,7 +141,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
                                         .addGap(85, 85, 85)
                                         .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(addressText)
-                                            .addComponent(immunizationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(registrationTf, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(contentPanelLayout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
@@ -169,7 +169,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11)
-                    .addComponent(immunizationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(registrationTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -304,9 +304,9 @@ public class AddStudentPanel extends javax.swing.JPanel {
         String age = ageText.getText();
         String studentFirstName = studentFirstNameTf.getText();
         String studentLastName = studentLastNameText.getText();
-        String immuDate = immunizationTextField.getText();
+        String regDate = registrationTf.getText();
 
-        if (studentFirstName.equals("") || age.equals("") || id.equals("") || studentLastName.equals("") || immuDate.equals("")) {
+        if (studentFirstName.equals("") || age.equals("") || id.equals("") || studentLastName.equals("") || regDate.equals("")) {
             JOptionPane.showMessageDialog(this,
                     "Please fill all the required fields",
                     "Error Message",
@@ -317,7 +317,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
         String address = addressText.getText();
         String gender = genderCombo.getSelectedItem().toString();
 
-        String studentString = id + "," + age + "," + studentFirstName + "," + studentLastName + "," + immuDate;
+        String studentString = id + "," + age + "," + studentFirstName + "," + studentLastName + "," + regDate;
 
         try {
             Student s = StudentFactory.getInstance().getObject(studentString);
@@ -357,7 +357,6 @@ public class AddStudentPanel extends javax.swing.JPanel {
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel idLabel;
     private javax.swing.JTextField idTextField;
-    private javax.swing.JTextField immunizationTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -374,6 +373,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
     private javax.swing.JTextField parentFirstnameText;
     private javax.swing.JTextField parentLastnameText;
     private javax.swing.JTextField parentPhoneText;
+    private javax.swing.JTextField registrationTf;
     private javax.swing.JTextField studentFirstNameTf;
     private javax.swing.JTextField studentLastNameText;
     // End of variables declaration//GEN-END:variables

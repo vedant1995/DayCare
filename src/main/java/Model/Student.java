@@ -54,11 +54,12 @@ public class Student extends AbstractPerson {
     @Override
     public void setId(int id) {
         // TODO Auto-generated method stub
-
+        this.Id = id;
     }
 
     public void setAge(int age) {
         // TODO Auto-generated method stub
+        this.Age = age;
     }
 
     public int getAge() {
@@ -76,6 +77,7 @@ public class Student extends AbstractPerson {
 
     public void setFirstName(String firstName) {
         // TODO Auto-generated method stub
+        this.FirstName = firstName;
 
     }
 

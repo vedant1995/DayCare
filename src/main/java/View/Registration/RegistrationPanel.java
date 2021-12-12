@@ -5,17 +5,24 @@
  */
 package View.Registration;
 
+import Model.School;
+import javax.swing.JPanel;
+
 /**
  *
  * @author vedan
  */
 public class RegistrationPanel extends javax.swing.JPanel {
 
+    private JPanel container;
+    private School school;
     /**
      * Creates new form RegistrationPanel
      */
-    public RegistrationPanel() {
+    public RegistrationPanel(JPanel container, School school) {
         initComponents();
+        this.container = container;
+        this.school = school;
     }
 
     /**
