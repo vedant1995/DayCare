@@ -66,7 +66,9 @@ public class School {
 
     // To get teacher specific information in TeacherInformationPanel.java
     public AbstractPerson findTeacherById(int id) {
-        for (AbstractPerson p : TeacherList) {
+        System.out.println("Printing in findteacherbyid... teacher list is - > ");
+        for (AbstractPerson p : TeacherList) {            
+            System.out.println(p);
             if (p.getId() == id) {
                 return p;
             }

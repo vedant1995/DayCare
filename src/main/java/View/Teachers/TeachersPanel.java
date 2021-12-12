@@ -49,7 +49,7 @@ public class TeachersPanel extends javax.swing.JPanel {
             List<Teacher> teachers = classroom.getTeacherList();
             // TODO: Display classroom id associated with the teacher if any?
             // Map<Teacher, Integer> teacherMap = new HashMap<>();
-            for (Teacher teacher : teachers) {               
+            for (Teacher teacher : teachers) {                
                 Object[] row = new Object[6];
                 row[0] = teacher.getId();
                 row[1] = teacher.getAge();
@@ -177,8 +177,11 @@ public class TeachersPanel extends javax.swing.JPanel {
             return;
         }
 
+        // Get the teacherId of the selected row from the table
         int teacherId = (int) teachersTable.getValueAt(selectedRow, 0);
+        
         AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
+        
         if (selectedTeacher != null) {
             StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedTeacher);
             container.add(studentInfoPanel);
