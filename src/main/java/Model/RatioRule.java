@@ -3,18 +3,21 @@ package Model;
 public class RatioRule {
     private int low;
     private int high;
-    private int size;
+    private int GroupSize;
+    private int ClassroomSize;
 
     public RatioRule(String csv){
         String[] item = csv.split(",");
         low = Integer.parseInt(item[0]);
         high = Integer.parseInt(item[1]);
-        size = Integer.parseInt(item[2]);
+        GroupSize = Integer.parseInt(item[2]);
+        ClassroomSize = Integer.parseInt(item[3]);
     }
 
     public int getLow(){return low;}
     public int getHigh(){return  high;}
-    public int getSize(){return size;}
+    public int getGroupSize(){return GroupSize;}
+    public int getClassroomSize(){return ClassroomSize;}
     public boolean inRange(int age){
         return (low<=age && age < high);
     }

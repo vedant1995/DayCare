@@ -34,6 +34,8 @@ public class Driver {
 		}
 		//neu.sortStudentByFirstName();
 		neu.showStudent();
+		FileUtil.writeStringToFile(CSVList,"output.txt");
+
 
 
                 

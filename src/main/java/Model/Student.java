@@ -17,7 +17,17 @@ public class Student extends AbstractPerson {
     private int ClassId;
     private List<Vax> VaxList = new ArrayList<>();
 
+    public LocalDate getLastRegDate() {
+        return LastRegDate;
+    }
 
+    public LocalDate getExpectReNewDate() {
+        return ExpectReNewDate;
+    }
+
+    public double getGPA() {
+        return GPA;
+    }
 
     public Student(String csv) {
         String[] item = csv.split(",");
@@ -121,6 +131,15 @@ public class Student extends AbstractPerson {
                 ", NeedRenew=" + NeedRenew +
                 ", Vax=" + VaxList +
                 '}';
+    }
+
+    public String toCSV(){
+        return Id + "," +
+                Age + "," +
+                FirstName + "," +
+                LastName + "," +
+                LastRegDate.toString() + "," +
+                GPA;
     }
 
 
