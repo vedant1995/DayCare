@@ -176,20 +176,18 @@ public class ClassroomsPanel extends javax.swing.JPanel {
         }
 
         // Get the teacherId of the selected row from the table
-        int teacherId = (int) classroomsTable.getValueAt(selectedRow, 0);
+        int classroomId = (int) classroomsTable.getValueAt(selectedRow, 0);
 
         // AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
         for (Classroom classroom : school.getClassroomList()) {
-            List<Teacher> teachers = classroom.getTeacherList();
-            for (Teacher teacher : teachers) {
-                if (teacher.getId() == teacherId) {
-                    TeacherInformationPanel teacherInfoPanel = new TeacherInformationPanel(container, teacher);
-                    container.add(teacherInfoPanel);
-                    CardLayout layout = (CardLayout) container.getLayout();
-                    layout.next(container);
-                    return;
-                }
+            if (classroom.getId() == classroomId) {
+                ClassroomsInformationPanel classroomInfoPanel = new ClassroomsInformationPanel(container, classroom);
+                container.add(classroomInfoPanel);
+                CardLayout layout = (CardLayout) container.getLayout();
+                layout.next(container);
+                return;
             }
+
         }
         System.out.println("Teacher not found");
         // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
