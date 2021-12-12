@@ -10,7 +10,7 @@ import Controller.ImageHelper;
 import Model.Admin;
 import Model.School;
 import View.Classrooms.ClassroomsPanel;
-import View.Registration.RegistrationPanel;
+import View.Students.RegistrationPanel;
 import View.Teachers.TeachersPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -48,8 +48,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         buttonIconMap.put(studentsButton, "/icons/student.png");
         buttonIconMap.put(teachersButton, "/icons/teacher.png");
         buttonIconMap.put(classroomsButton, "/icons/classroom.png");
-        buttonIconMap.put(immunizationButton, "/icons/immunization.png");
-        buttonIconMap.put(registrationButton, "/icons/renewal.png");
+        
         buttonIconMap.put(empReviewButton, "/icons/reviews.png");
 
         ImageHelper imageHelper = new ImageHelper();
@@ -92,10 +91,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         teachersButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         classroomsButton = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
-        immunizationButton = new javax.swing.JButton();
-        regContainerPanel = new javax.swing.JPanel();
-        registrationButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         empReviewButton = new javax.swing.JButton();
 
@@ -168,7 +163,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         studentsTile.setLayout(studentsTileLayout);
         studentsTileLayout.setHorizontalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         studentsTileLayout.setVerticalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -216,7 +211,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,54 +219,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         );
 
         homePanel.add(jPanel5);
-
-        jPanel6.setBackground(java.awt.SystemColor.inactiveCaption);
-
-        immunizationButton.setBackground(java.awt.SystemColor.inactiveCaption);
-        immunizationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        immunizationButton.setText("Immunization");
-        immunizationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                immunizationButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(immunizationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(immunizationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-        );
-
-        homePanel.add(jPanel6);
-
-        regContainerPanel.setBackground(java.awt.SystemColor.inactiveCaption);
-
-        registrationButton.setBackground(java.awt.SystemColor.inactiveCaption);
-        registrationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        registrationButton.setText("Registration ");
-        registrationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrationButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout regContainerPanelLayout = new javax.swing.GroupLayout(regContainerPanel);
-        regContainerPanel.setLayout(regContainerPanelLayout);
-        regContainerPanelLayout.setHorizontalGroup(
-            regContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registrationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-        );
-        regContainerPanelLayout.setVerticalGroup(
-            regContainerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(registrationButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-        );
-
-        homePanel.add(regContainerPanel);
 
         empReviewButton.setBackground(java.awt.SystemColor.inactiveCaption);
         empReviewButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -338,18 +285,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         layout.next(dashboardContainer);
     }//GEN-LAST:event_teachersButtonActionPerformed
 
-    private void immunizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_immunizationButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_immunizationButtonActionPerformed
-
-    private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrationButtonActionPerformed
-        // TODO add your handling code here:
-        RegistrationPanel rp = new RegistrationPanel(dashboardContainer, school);
-        CardLayout layout = (CardLayout) dashboardContainer.getLayout();
-        dashboardContainer.add(rp);
-        layout.next(dashboardContainer);
-    }//GEN-LAST:event_registrationButtonActionPerformed
-
     private void classroomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classroomsButtonActionPerformed
         // TODO add your handling code here:
         ClassroomsPanel rp = new ClassroomsPanel(dashboardContainer, school);
@@ -365,16 +300,12 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JLabel daycareLabel;
     private javax.swing.JButton empReviewButton;
     private javax.swing.JPanel homePanel;
-    private javax.swing.JButton immunizationButton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JPanel regContainerPanel;
-    private javax.swing.JButton registrationButton;
     private javax.swing.JButton studentsButton;
     private javax.swing.JPanel studentsTile;
     private javax.swing.JButton teachersButton;
