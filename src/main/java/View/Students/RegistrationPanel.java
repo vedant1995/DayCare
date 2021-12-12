@@ -47,13 +47,14 @@ public class RegistrationPanel extends javax.swing.JPanel {
         model.setRowCount(0);
 
         for (AbstractPerson student : school.getStudentList()) {
-            Object[] row = new Object[5];
+            Object[] row = new Object[6];
             Student s = (Student) student;
             row[0] = student.getId();
             row[1] = student.getFirstName();
             row[2] = student.getLastName();
             row[3] = s.getLastRegDate().toString();
             row[4] = s.getExpectReNewDate().toString();
+            row[5] = s.getParentEmail();
             model.addRow(row);
         }
     }
@@ -101,20 +102,20 @@ public class RegistrationPanel extends javax.swing.JPanel {
 
         expiredTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Firstname", "Lastname", "Registration date", "Renewal date"
+                "ID", "Firstname", "Lastname", "Registration date", "Renewal date", "Parent's email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -231,6 +232,10 @@ public class RegistrationPanel extends javax.swing.JPanel {
                 message.setSubject(subject);
                 message.setText("We are contacting you to inform that your child - " + s.getFirstName() + " " + s.getLastName() + " registration is about to expire on " + s.getExpectReNewDate() + ". Please contact the admissions team to re-enroll");
                 Transport.send(message);
+                JOptionPane.showMessageDialog(this,
+                        "Notification sent to parent at " + toEmail,
+                        "Success",
+                        JOptionPane.OK_OPTION);
             } catch (Exception ex) {
                 System.out.println("" + ex);
                 JOptionPane.showMessageDialog(this,
