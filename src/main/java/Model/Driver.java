@@ -28,6 +28,7 @@ public class Driver {
 		for(String s: CSVList){
 			Student student = StudentFactory.getInstance().getObject(s);
 			for(Vax v:vaxes){
+                            if(v.getStudentId() == student.getId())
 				student.addVax(v);
 			}
 			neu.addStudent(student);
