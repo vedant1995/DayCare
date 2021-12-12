@@ -17,6 +17,8 @@ public class Student extends AbstractPerson {
     private boolean NeedRenew;
     private int ClassId;
     private List<Vax> VaxList = new ArrayList<>();
+    private String parentName;
+    private String parentEmail;
 
     public Student(String csv) {
         String[] item = csv.split(",");
@@ -27,6 +29,8 @@ public class Student extends AbstractPerson {
         this.LastRegDate = LocalDate.parse(item[4]);
         ExpectReNewDate = LastRegDate.plusYears(1L);
         this.GPA = Double.parseDouble(item[5]);
+        this.parentName = item[6];
+        this.parentEmail = item[7];
 //        Scanner sc = new Scanner(csv);
 //        sc.useDelimiter(",");
 //        try {
@@ -151,6 +155,24 @@ public class Student extends AbstractPerson {
     public void setVaxList(List<Vax> VaxList) {
         this.VaxList = VaxList;
     }
+
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public String getParentEmail() {
+        return parentEmail;
+    }
+
+    public void setParentEmail(String parentEmail) {
+        this.parentEmail = parentEmail;
+    }
+    
+    
 
     @Override
     public String toString() {

@@ -11,6 +11,13 @@ import Model.Student;
 import View.Students.StudentInformationPanel;
 import java.awt.CardLayout;
 import java.time.LocalDate;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -86,7 +93,6 @@ public class RegistrationPanel extends javax.swing.JPanel {
         });
 
         notifyButton.setText("Send a reminder");
-        notifyButton.setEnabled(false);
         notifyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 notifyButtonActionPerformed(evt);
@@ -183,13 +189,58 @@ public class RegistrationPanel extends javax.swing.JPanel {
                     "Success",
                     JOptionPane.OK_OPTION);
             return;
-            
+
         }
         // System.out.println("Teacher not found");        
     }//GEN-LAST:event_viewTeacherButtonActionPerformed
 
     private void notifyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notifyButtonActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling code here:        
+        int selectedRow = expiredTable.getSelectedRow();
+
+        if (selectedRow < 0) {
+            return;
+        }
+
+        int studentId = (int) expiredTable.getValueAt(selectedRow, 0);
+        AbstractPerson selectedStudent = school.findStudentById(studentId);
+        if (selectedStudent != null) {
+            Student s = (Student) selectedStudent;
+            String toEmail = s.getParentEmail();
+            String fromEmail = "csye6200@mail.com";
+            String fromPwd = "csye6200";
+            String subject = "Registration of your child - " + s.getFirstName() + " " + s.getLastName() + " is due on "
+                    + s.getExpectReNewDate() + ". Please contact the admissions team to re-enroll";
+
+            Properties properties = new Properties();
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.starttls.enable", "true");
+            properties.put("mail.smtp.host", "smtp.mail.com");
+            properties.put("mail.smtp.port", "587");
+
+            Session session = Session.getDefaultInstance(properties, new javax.mail.Authenticator() {
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(fromEmail, fromPwd);
+                }
+            });
+
+            try {
+                MimeMessage message = new MimeMessage(session);
+                message.setFrom(new InternetAddress(fromEmail));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(toEmail));
+                message.setSubject(subject);
+                message.setText("We are contacting you to inform that your child - " + s.getFirstName() + " " + s.getLastName() + " registration is about to expire on " + s.getExpectReNewDate() + ". Please contact the admissions team to re-enroll");
+                Transport.send(message);
+            } catch (Exception ex) {
+                System.out.println("" + ex);
+                JOptionPane.showMessageDialog(this,
+                        "Error sending a notification",
+                        "Error",
+                        JOptionPane.ERROR);
+                return;
+            }
+        }
+
     }//GEN-LAST:event_notifyButtonActionPerformed
 
 
