@@ -120,7 +120,7 @@ public class TeachersPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(teachersTable);
 
-        viewTeacherButton.setText("View Teacher");
+        viewTeacherButton.setText("View details");
         viewTeacherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTeacherButtonActionPerformed(evt);
@@ -177,14 +177,15 @@ public class TeachersPanel extends javax.swing.JPanel {
             return;
         }
 
-        int studentId = (int) teachersTable.getValueAt(selectedRow, 0);
-        AbstractPerson selectedStudent = school.findStudentById(studentId);
-        if (selectedStudent != null) {
-            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent);
+        int teacherId = (int) teachersTable.getValueAt(selectedRow, 0);
+        AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
+        if (selectedTeacher != null) {
+            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedTeacher);
             container.add(studentInfoPanel);
             CardLayout layout = (CardLayout) container.getLayout();
             layout.next(container);
         }
+        System.out.println("Teacher not found");
         // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
     }//GEN-LAST:event_viewTeacherButtonActionPerformed
 
