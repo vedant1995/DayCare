@@ -7,7 +7,7 @@ import java.util.List;
 public class School {
     private List<Classroom> ClassroomList = new ArrayList<>();
     private List<AbstractPerson> TeacherList = new ArrayList<>();
-    private List<AbstractPerson> StudentList = new ArrayList<>();
+    private List<Student> StudentList = new ArrayList<>();
     private int tid;
     private int cid;
     private List<RatioRule> ratioRules = new ArrayList<>();
@@ -33,9 +33,9 @@ public class School {
         ratioRules.add(r);
     }
 
-    public Teacher generateTeacher(int size){
+    public Teacher generateTeacher(int size,int cid){
         //Teacher t = new Teacher(tid++);
-        Teacher t = TeacherFactory.getInstance().getObject(tid++,size);
+        Teacher t = TeacherFactory.getInstance().getObject(tid++,size,cid);
         return t;
     }
 
@@ -81,11 +81,11 @@ public class School {
             for (RatioRule r:ratioRules){
                 if (r.inRange(s.getAge())){
                     Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
-                    Teacher t = generateTeacher(r.getSize());
+                    Teacher t = generateTeacher(r.getGroupSize(),c.getId());
                     s.setClassId(c.getId());
                     t.addStudent(s);
-                    for(int i = 0; i < 2; i++){
-                        c.addTeacher(generateTeacher(r.getSize()));
+                    for(int i = 0; i < r.getClassroomSize()-1; i++){
+                        c.addTeacher(generateTeacher(r.getGroupSize(),c.getId()));
 
                     }
                     ClassroomList.add(c);
@@ -111,11 +111,11 @@ public class School {
         for (RatioRule r:ratioRules){
             if (r.inRange(s.getAge())){
                 Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
-                Teacher t = generateTeacher(r.getSize());
+                Teacher t = generateTeacher(r.getGroupSize(),c.getId());
                 s.setClassId(c.getId());
                 t.addStudent(s);
-                for(int i = 0; i < 2; i++){
-                    c.addTeacher(generateTeacher(r.getSize()));
+                for(int i = 0; i < r.getClassroomSize(); i++){
+                    c.addTeacher(generateTeacher(r.getGroupSize(),c.getId()));
 
                 }
                 ClassroomList.add(c);
@@ -170,7 +170,7 @@ public class School {
             System.out.println(s);
         }
     }
-    public List<AbstractPerson> getStudentList(){
+    public List<Student> getStudentList(){
         return StudentList;
     }
 

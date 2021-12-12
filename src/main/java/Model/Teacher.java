@@ -1,5 +1,6 @@
 package Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,6 +14,8 @@ public class Teacher extends AbstractPerson {
     private String LastName;
     private String FirstName;
     private int Wage;
+    private int ClassroomId;
+    private LocalDate ReviewDate;
     private List<Student> StudentList = new ArrayList<>();
     private int count = 0;
     private int size;
@@ -23,7 +26,7 @@ public class Teacher extends AbstractPerson {
 
 
 
-    public Teacher(int id, int size,String firstName,String lastName,int age,int wage ){
+    public Teacher(int id, int size,String firstName,String lastName,int age,int wage,int cid,String reviewDate ){
         this.Id = id;
         this.size = size;
         this.FirstName = firstName;
@@ -31,6 +34,8 @@ public class Teacher extends AbstractPerson {
         this.Age = age;
         //Random r = new Random();
         this.Wage = wage;
+        this.ClassroomId = cid;
+        this.ReviewDate = LocalDate.parse(reviewDate);
 
     }
 
@@ -46,6 +51,9 @@ public class Teacher extends AbstractPerson {
         this.Id = id;
     }
 
+    public void setClassroomId(int id){
+        this.ClassroomId = id;
+    }
     @Override
     public void setAge(int age) {
         // TODO Auto-generated method stub
@@ -66,6 +74,10 @@ public class Teacher extends AbstractPerson {
     @Override
     public String getLastName() {
         return this.LastName;
+    }
+
+    public LocalDate getReviewDate(){
+        return this.ReviewDate;
     }
 
     public int getWage(){return this.Wage;}
