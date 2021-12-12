@@ -121,4 +121,9 @@ public class Teacher extends AbstractPerson {
         }
 
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" + "Id=" + Id + ", Age=" + Age + ", LastName=" + LastName + ", FirstName=" + FirstName + ", Wage=" + Wage + ", count=" + count + ", size=" + size + '}';
+    }
 }
