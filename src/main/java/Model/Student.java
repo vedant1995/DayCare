@@ -191,5 +191,15 @@ public class Student extends AbstractPerson {
                 '}';
     }
 
+    public String toCSV(){
+        return Id + "," +
+                Age + "," +
+                FirstName + "," +
+                LastName + "," +
+                LastRegDate.toString() + "," +
+                parentName + "." +
+                parentEmail;
+    }
+
 
 }

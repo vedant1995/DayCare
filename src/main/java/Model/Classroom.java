@@ -11,11 +11,11 @@ public class Classroom {
     private int count;
     private int[] AgeRange = new int[2];
 
-    public Classroom(int id, int low,int high){
+    public Classroom(int id, int low,int high,int size){
         this.Id = id;
         this.AgeRange[0] = low;
         this.AgeRange[1] = high;
-
+        this.size = size;
     }
 
     public int[] getAgeRange(){

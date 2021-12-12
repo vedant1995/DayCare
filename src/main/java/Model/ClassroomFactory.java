@@ -12,8 +12,8 @@ public class ClassroomFactory extends AbstractFactory{
         return instance;
     }
 
-    public Classroom getObject(int cid,int low,int high){
-        return new Classroom(cid,low,high);
+    public Classroom getObject(int cid,int low,int high, int size){
+        return new Classroom(cid,low,high,size);
     }
 
 }

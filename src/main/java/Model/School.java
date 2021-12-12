@@ -29,6 +29,13 @@ public class School {
 //        ClassroomList.add(c);
 
     }
+    public List<String> addAllStudentToCSV(){
+        List<String> CSVList = new ArrayList<>();
+        for (Student s: StudentList){
+            CSVList.add(s.toCSV());
+        }
+        return CSVList;
+    }
     public void addRatioRule(RatioRule r){
         ratioRules.add(r);
     }
@@ -80,7 +87,7 @@ public class School {
         if (ClassroomList.isEmpty()){
             for (RatioRule r:ratioRules){
                 if (r.inRange(s.getAge())){
-                    Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
+                    Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh(), r.getClassroomSize());
                     Teacher t = generateTeacher(r.getGroupSize(),c.getId());
                     s.setClassId(c.getId());
                     t.addStudent(s);
@@ -110,7 +117,7 @@ public class School {
         }
         for (RatioRule r:ratioRules){
             if (r.inRange(s.getAge())){
-                Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh());
+                Classroom c = ClassroomFactory.getInstance().getObject(cid++,r.getLow(),r.getHigh(),r.getClassroomSize());
                 Teacher t = generateTeacher(r.getGroupSize(),c.getId());
                 s.setClassId(c.getId());
                 t.addStudent(s);
