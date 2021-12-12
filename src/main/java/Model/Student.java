@@ -156,6 +156,24 @@ public class Student extends AbstractPerson {
         this.VaxList = VaxList;
     }
 
+    public String getParentName() {
+        return parentName;
+    }
+
+    public void setParentName(String parentName) {
+        this.parentName = parentName;
+    }
+
+    public String getParentEmail() {
+        return parentEmail;
+    }
+
+    public void setParentEmail(String parentEmail) {
+        this.parentEmail = parentEmail;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Student{" +
