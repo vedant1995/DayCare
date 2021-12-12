@@ -36,13 +36,14 @@ public class TeachersPanel extends javax.swing.JPanel {
         initComponents();
         this.container = container;
         this.school = school;
+        // school.showAll();
         populateTable();
     }
 
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) teachersTable.getModel();
         model.setRowCount(0);
-
+        school.showAll();
         // TODO: Add wage column to the table
         for (Classroom classroom
                 : school.getClassroomList()) {

@@ -236,6 +236,14 @@ public class School {
         this.TeacherList = TeacherList;
     }
 
+    public int getTid() {
+        return tid;
+    }
+
+    public void setTid(int tid) {
+        this.tid = tid;
+    }
+
     public int getCid() {
         return cid;
     }

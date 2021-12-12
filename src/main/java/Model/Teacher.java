@@ -17,30 +17,6 @@ public class Teacher extends AbstractPerson {
     private int count = 0;
     private int size;
 
-    public List<Student> getStudentList() {
-        return StudentList;
-    }
-
-    public void setStudentList(List<Student> StudentList) {
-        this.StudentList = StudentList;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
 
 
 
@@ -61,13 +37,13 @@ public class Teacher extends AbstractPerson {
     @Override
     public int getId() {
         // TODO Auto-generated method stub
-        return 0;
+        return Id;
     }
 
     @Override
     public void setId(int id) {
         // TODO Auto-generated method stub
-
+        this.Id = id;
     }
 
     @Override
@@ -124,11 +100,34 @@ public class Teacher extends AbstractPerson {
 
     }
 
+    public List<Student> getStudentList() {
+        return StudentList;
+    }
+
+    public void setStudentList(List<Student> StudentList) {
+        this.StudentList = StudentList;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
     @Override
     public String toString() {
         return "Teacher{" + "Id=" + Id + ", Age=" + Age + ", LastName=" + LastName + ", FirstName=" + FirstName + ", Wage=" + Wage + ", count=" + count + ", size=" + size + '}';
     }
-    
     
     
 }
