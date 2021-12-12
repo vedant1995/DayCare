@@ -91,7 +91,7 @@
                     <Column editable="false" title="Age" type="java.lang.Integer"/>
                     <Column editable="false" title="Firstname" type="java.lang.String"/>
                     <Column editable="false" title="Lastname" type="java.lang.String"/>
-                    <Column editable="false" title="Registration Date" type="java.lang.String"/>
+                    <Column editable="false" title="GPA" type="java.lang.Double"/>
                   </Table>
                 </Property>
               </Properties>
@@ -104,7 +104,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="viewStudentButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View student"/>
+                <Property name="text" type="java.lang.String" value="View details"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewStudentButtonActionPerformed"/>
