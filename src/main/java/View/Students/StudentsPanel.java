@@ -43,8 +43,8 @@ public class StudentsPanel extends javax.swing.JPanel {
             row[0] = student.getId();
             row[1] = student.getAge();
             row[2] = student.getFirstName();
-            row[3] = student.getLastName();
-            row[4] = s.getLastRegDate().toString();
+            row[3] = student.getLastName();            
+            row[4] = s.getGPA();
             model.addRow(row);
         }
     }
@@ -88,11 +88,11 @@ public class StudentsPanel extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Age", "Firstname", "Lastname", "Registration Date"
+                "ID", "Age", "Firstname", "Lastname", "GPA"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false
@@ -108,7 +108,7 @@ public class StudentsPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(studentsTable);
 
-        viewStudentButton.setText("View student");
+        viewStudentButton.setText("View details");
         viewStudentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewStudentButtonActionPerformed(evt);
