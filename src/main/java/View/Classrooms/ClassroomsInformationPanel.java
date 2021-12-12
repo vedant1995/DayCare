@@ -57,6 +57,8 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
         classroomChartPanel.setLayout(new java.awt.BorderLayout());
         classroomChartPanel.add(chartPanel, BorderLayout.CENTER);
         
+        // groupsLabel.setVisible(false);
+        // groupsList.setVisible(false);
         populateClassroomListData();
     }
 
@@ -89,25 +91,27 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
 
         groupsList.setListData(teachers);
         groupsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        groupsList.addMouseListener(new MouseAdapter() {
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 2) {
-                    int index = groupsList.locationToIndex(e.getPoint());
-                    
-                    int teacherId = teachs.get(index).getId();
-                    for (Teacher teacher : classroom.getTeacherList()) {
-                        if (teacher.getId() == teacherId) {
-                            TeacherInformationPanel teacherInfoPanel = new TeacherInformationPanel(container, teacher);
-                            container.add(teacherInfoPanel);
-                            CardLayout layout = (CardLayout) container.getLayout();
-                            layout.next(container);
-                            return;
-                        }
-                    }
-                    System.out.println("Teacher not found");
-                }
-            }
-        });
+        
+        // navigation commented out for now.. as its causing some problems while going back
+//        groupsList.addMouseListener(new MouseAdapter() {
+//            public void mouseClicked(MouseEvent e) {
+//                if (e.getClickCount() == 2) {
+//                    int index = groupsList.locationToIndex(e.getPoint());
+//                    
+//                    int teacherId = teachs.get(index).getId();
+//                    for (Teacher teacher : classroom.getTeacherList()) {
+//                        if (teacher.getId() == teacherId) {
+//                            TeacherInformationPanel teacherInfoPanel = new TeacherInformationPanel(container, teacher);
+//                            container.add(teacherInfoPanel);
+//                            CardLayout layout = (CardLayout) container.getLayout();
+//                            layout.next(container);
+//                            return;
+//                        }
+//                    }
+//                    System.out.println("Teacher not found");
+//                }
+//            }
+//        });
 
     }
 
@@ -133,7 +137,7 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
         groupsTf = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         groupsList = new javax.swing.JList<>();
-        jLabel6 = new javax.swing.JLabel();
+        groupsLabel = new javax.swing.JLabel();
         classroomChartPanel = new javax.swing.JPanel();
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -167,9 +171,9 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
 
         jScrollPane1.setViewportView(groupsList);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Groups");
+        groupsLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        groupsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        groupsLabel.setText("Groups");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -200,7 +204,7 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(groupsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -223,7 +227,7 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(maxTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(jLabel6)
+                .addComponent(groupsLabel)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -295,12 +299,12 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
                         .addComponent(backButton)))
-                .addContainerGap(446, Short.MAX_VALUE))
+                .addContainerGap(451, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 59, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 60, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -320,6 +324,7 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
     private javax.swing.JTextField ageTf;
     private javax.swing.JButton backButton;
     private javax.swing.JPanel classroomChartPanel;
+    private javax.swing.JLabel groupsLabel;
     private javax.swing.JList<String> groupsList;
     private javax.swing.JTextField groupsTf;
     private javax.swing.JTextField idTf;
@@ -328,7 +333,6 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
