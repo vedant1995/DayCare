@@ -105,7 +105,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="viewTeacherButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="View Teacher"/>
+                <Property name="text" type="java.lang.String" value="View details"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewTeacherButtonActionPerformed"/>

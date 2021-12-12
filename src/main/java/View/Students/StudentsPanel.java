@@ -106,7 +106,7 @@ public class StudentsPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(studentsTable);
 
-        viewStudentButton.setText("View student");
+        viewStudentButton.setText("View details");
         viewStudentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewStudentButtonActionPerformed(evt);
