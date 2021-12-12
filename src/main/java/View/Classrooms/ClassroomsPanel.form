@@ -89,7 +89,7 @@
                   <Table columnCount="4" rowCount="4">
                     <Column editable="false" title="ID" type="java.lang.Integer"/>
                     <Column editable="false" title="Age range" type="java.lang.String"/>
-                    <Column editable="false" title="Group size" type="java.lang.Integer"/>
+                    <Column editable="false" title="Number of group in classroom" type="java.lang.Integer"/>
                     <Column editable="false" title="Max groups allowed" type="java.lang.Integer"/>
                   </Table>
                 </Property>

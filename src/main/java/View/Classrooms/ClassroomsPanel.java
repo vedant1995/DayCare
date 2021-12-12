@@ -51,7 +51,7 @@ public class ClassroomsPanel extends javax.swing.JPanel {
             Object[] row = new Object[4];
             row[0] = classroom.getId();
             int low = classroom.getAgeRange()[0];
-            int high = classroom.getAgeRange()[0];
+            int high = classroom.getAgeRange()[1];
             String range = String.valueOf(low) + " - " + String.valueOf(high);
             row[1] = range;
             row[2] = classroom.getCount();
@@ -98,7 +98,7 @@ public class ClassroomsPanel extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "ID", "Age range", "Group size", "Max groups allowed"
+                "ID", "Age range", "Number of group in classroom", "Max groups allowed"
             }
         ) {
             Class[] types = new Class [] {
