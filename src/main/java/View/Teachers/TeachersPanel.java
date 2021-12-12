@@ -5,6 +5,7 @@
  */
 package View.Teachers;
 
+import Controller.ImageHelper;
 import View.Students.*;
 import Model.AbstractPerson;
 import Model.Classroom;
@@ -28,6 +29,7 @@ public class TeachersPanel extends javax.swing.JPanel {
 
     private JPanel container;
     private School school;
+    private List<Teacher> teachersList;
 
     /**
      * Creates new form StudentsPanel
@@ -36,7 +38,10 @@ public class TeachersPanel extends javax.swing.JPanel {
         initComponents();
         this.container = container;
         this.school = school;
-        // school.showAll();
+
+        ImageHelper imageHelper = new ImageHelper();
+        imageHelper.scaleAndSetButtonIcon("/icons/reviews.png", empReviewButton, 100, 100);
+
         populateTable();
     }
 
@@ -79,6 +84,7 @@ public class TeachersPanel extends javax.swing.JPanel {
         teachersTable = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         viewTeacherButton = new javax.swing.JButton();
+        empReviewButton = new javax.swing.JButton();
 
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
@@ -121,43 +127,60 @@ public class TeachersPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(teachersTable);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         viewTeacherButton.setText("View details");
         viewTeacherButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTeacherButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(viewTeacherButton);
+        jPanel1.add(viewTeacherButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
+
+        empReviewButton.setBackground(java.awt.SystemColor.inactiveCaption);
+        empReviewButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        empReviewButton.setText("Employee reviews");
+        empReviewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                empReviewButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(69, 69, 69)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(backButton)
                         .addGap(134, 134, 134)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 3, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 434, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(empReviewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backButton))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(backButton))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(empReviewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         add(jPanel2);
@@ -182,7 +205,6 @@ public class TeachersPanel extends javax.swing.JPanel {
         int teacherId = (int) teachersTable.getValueAt(selectedRow, 0);
 
         // AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
-
         for (Classroom classroom : school.getClassroomList()) {
             List<Teacher> teachers = classroom.getTeacherList();
             for (Teacher teacher : teachers) {
@@ -199,9 +221,19 @@ public class TeachersPanel extends javax.swing.JPanel {
         // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
     }//GEN-LAST:event_viewTeacherButtonActionPerformed
 
+    private void empReviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empReviewButtonActionPerformed
+        // TODO add your handling code here:
+                
+        EmployeeReviewsPanel infoPanel = new EmployeeReviewsPanel(container, school);
+        container.add(infoPanel);
+        CardLayout layout = (CardLayout) container.getLayout();
+        layout.next(container);
+    }//GEN-LAST:event_empReviewButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton empReviewButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

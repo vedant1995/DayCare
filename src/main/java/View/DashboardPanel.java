@@ -49,7 +49,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         buttonIconMap.put(teachersButton, "/icons/teacher.png");
         buttonIconMap.put(classroomsButton, "/icons/classroom.png");
         
-        buttonIconMap.put(empReviewButton, "/icons/reviews.png");
+        
 
         ImageHelper imageHelper = new ImageHelper();
 
@@ -91,8 +91,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         teachersButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         classroomsButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        empReviewButton = new javax.swing.JButton();
 
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
@@ -146,7 +144,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         dashboardContainer.setLayout(new java.awt.CardLayout(10, 10));
 
         homePanel.setBackground(new java.awt.Color(255, 255, 255));
-        homePanel.setLayout(new java.awt.GridLayout(2, 3, 10, 10));
+        homePanel.setLayout(new java.awt.GridLayout(1, 3, 10, 10));
 
         studentsTile.setBackground(java.awt.SystemColor.inactiveCaption);
 
@@ -163,11 +161,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         studentsTile.setLayout(studentsTileLayout);
         studentsTileLayout.setHorizontalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         studentsTileLayout.setVerticalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
 
         homePanel.add(studentsTile);
@@ -211,36 +209,14 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel5);
-
-        empReviewButton.setBackground(java.awt.SystemColor.inactiveCaption);
-        empReviewButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        empReviewButton.setText("Employee reviews");
-        empReviewButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                empReviewButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(empReviewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(empReviewButton, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-        );
-
-        homePanel.add(jPanel2);
 
         dashboardContainer.add(homePanel, "card2");
 
@@ -264,10 +240,6 @@ public class DashboardPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) mainContainer.getLayout();
         layout.previous(mainContainer);
     }//GEN-LAST:event_logoutButtonActionPerformed
-
-    private void empReviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empReviewButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_empReviewButtonActionPerformed
 
     private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
@@ -298,10 +270,8 @@ public class DashboardPanel extends javax.swing.JPanel {
     private javax.swing.JButton classroomsButton;
     private javax.swing.JPanel dashboardContainer;
     private javax.swing.JLabel daycareLabel;
-    private javax.swing.JButton empReviewButton;
     private javax.swing.JPanel homePanel;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSplitPane jSplitPane1;

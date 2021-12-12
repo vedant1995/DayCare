@@ -39,10 +39,12 @@ public class SchoolController {
         for (String s : CSVList) {
             Student student = StudentFactory.getInstance().getObject(s);
             for (Vax v : vaxes) {
-                student.addVax(v);
+                if (v.getStudentId() == student.getId()) {
+                    student.addVax(v);
+                }
             }
             neu.addStudent(student);
-        }        
+        }
         return neu;
     }
 }
