@@ -60,35 +60,35 @@ public class Teacher extends AbstractPerson {
     @Override
     public int getId() {
         // TODO Auto-generated method stub
-        return 0;
+        return Id;
     }
 
     @Override
     public void setId(int id) {
         // TODO Auto-generated method stub
-
+        this.Id = id;
     }
 
     @Override
     public void setAge(int age) {
         // TODO Auto-generated method stub
-
+        this.Age = age;
     }
 
     @Override
     public int getAge() {
         // TODO Auto-generated method stub
-        return 0;
+        return Age;
     }
 
     @Override
     public String getFirstName() {
-        return null;
+        return FirstName;
     }
 
     @Override
     public String getLastName() {
-        return null;
+        return LastName;
     }
 
 //    @Override

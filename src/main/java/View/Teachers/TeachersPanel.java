@@ -7,13 +7,16 @@ package View.Teachers;
 
 import View.Students.*;
 import Model.AbstractPerson;
+import Model.Classroom;
 import Model.School;
 import Model.Student;
 import Model.Teacher;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -38,22 +41,24 @@ public class TeachersPanel extends javax.swing.JPanel {
 
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) teachersTable.getModel();
-
-//    private Double Wage;    
-//    private int count = 0;
-//    private int size;
         model.setRowCount(0);
 
-        for (AbstractPerson person
-                : school.getTeachersList()) {
-            Teacher teacher = (Teacher) person;
-            Object[] row = new Object[6];
-            row[0] = teacher.getId();
-            row[1] = teacher.getAge();
-            row[2] = teacher.getFirstName();
-            row[3] = teacher.getLastName();
-            
-            model.addRow(row);
+        // TODO: Add wage column to the table
+        for (Classroom classroom
+                : school.getClassroomList()) {
+            List<Teacher> teachers = classroom.getTeacherList();
+            // TODO: Display classroom id associated with the teacher if any?
+            // Map<Teacher, Integer> teacherMap = new HashMap<>();
+            for (Teacher teacher : teachers) {               
+                Object[] row = new Object[6];
+                row[0] = teacher.getId();
+                row[1] = teacher.getAge();
+                row[2] = teacher.getFirstName();
+                row[3] = teacher.getLastName();
+                row[4] = teacher.getCount();
+                row[5] = teacher.getSize();
+                model.addRow(row);
+            }
         }
     }
 
