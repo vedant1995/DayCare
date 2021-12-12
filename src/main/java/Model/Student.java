@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends AbstractPerson {
+
     private int Id;
     private int Age;
     private String FirstName;
@@ -16,8 +17,6 @@ public class Student extends AbstractPerson {
     private boolean NeedRenew;
     private int ClassId;
     private List<Vax> VaxList = new ArrayList<>();
-
-
 
     public Student(String csv) {
         String[] item = csv.split(",");
@@ -58,11 +57,9 @@ public class Student extends AbstractPerson {
 
     }
 
-
     public void setAge(int age) {
         // TODO Auto-generated method stub
     }
-
 
     public int getAge() {
         // TODO Auto-generated method stub
@@ -73,8 +70,7 @@ public class Student extends AbstractPerson {
 //    public void setName(String name) {
 //
 //    }
-
-    public void setClassId(int cid){
+    public void setClassId(int cid) {
         this.ClassId = cid;
     }
 
@@ -82,7 +78,6 @@ public class Student extends AbstractPerson {
         // TODO Auto-generated method stub
 
     }
-
 
     public String getFirstName() {
         // TODO Auto-generated method stub
@@ -94,32 +89,80 @@ public class Student extends AbstractPerson {
         return this.LastName;
     }
 
-    public void setTid(int tid){
+    public void setTid(int tid) {
         this.TeacherId = tid;
     }
 
-    public void checkRenew(){
+    public void checkRenew() {
         NeedRenew = LastRegDate.isBefore(LocalDate.now().minusYears(1L));
     }
 
-    public void addVax(Vax v){
+    public void addVax(Vax v) {
         VaxList.add(v);
     }
-    @Override
-    public String toString() {
-        return "Student{" +
-                "Id=" + Id +
-                ", Age=" + Age +
-                ", FirstName='" + FirstName + '\'' +
-                ", LastName='" + LastName + '\'' +
-                ", TeacherId=" + TeacherId +
-                ", ClassRoomId=" + ClassId +
-                ", RegDate=" + LastRegDate +
-                ", NextRenewDate" + ExpectReNewDate+
-                ", NeedRenew=" + NeedRenew +
-                ", Vax=" + VaxList +
-                '}';
+
+    public int getTeacherId() {
+        return TeacherId;
     }
 
+    public void setTeacherId(int TeacherId) {
+        this.TeacherId = TeacherId;
+    }
+
+    public LocalDate getLastRegDate() {
+        return LastRegDate;
+    }
+
+    public void setLastRegDate(LocalDate LastRegDate) {
+        this.LastRegDate = LastRegDate;
+    }
+
+    public LocalDate getExpectReNewDate() {
+        return ExpectReNewDate;
+    }
+
+    public void setExpectReNewDate(LocalDate ExpectReNewDate) {
+        this.ExpectReNewDate = ExpectReNewDate;
+    }
+
+    public double getGPA() {
+        return GPA;
+    }
+
+    public void setGPA(double GPA) {
+        this.GPA = GPA;
+    }
+
+    public boolean isNeedRenew() {
+        return NeedRenew;
+    }
+
+    public void setNeedRenew(boolean NeedRenew) {
+        this.NeedRenew = NeedRenew;
+    }
+
+    public List<Vax> getVaxList() {
+        return VaxList;
+    }
+
+    public void setVaxList(List<Vax> VaxList) {
+        this.VaxList = VaxList;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{"
+                + "Id=" + Id
+                + ", Age=" + Age
+                + ", FirstName='" + FirstName + '\''
+                + ", LastName='" + LastName + '\''
+                + ", TeacherId=" + TeacherId
+                + ", ClassRoomId=" + ClassId
+                + ", RegDate=" + LastRegDate
+                + ", NextRenewDate" + ExpectReNewDate
+                + ", NeedRenew=" + NeedRenew
+                + ", Vax=" + VaxList
+                + '}';
+    }
 
 }
