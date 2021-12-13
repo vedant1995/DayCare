@@ -59,11 +59,12 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
         // Total number of students 
         int studentsInClass = 0;
         // List<Student> allStudentsInClassroom = new ArrayList<>();
-        for(Teacher t : classroom.getTeacherList()) {
-            for(Student s : t.getStudentList())
+        for (Teacher t : classroom.getTeacherList()) {
+            for (Student s : t.getStudentList()) {
                 studentsInClass++;
+            }
         }
-        
+
         totalStudentsTf.setText(String.valueOf(studentsInClass));
 
         JFreeChart chart = createChart(createDataset(classroom.getCount(), classroom.getSize()));
@@ -130,42 +131,6 @@ public class ClassroomsInformationPanel extends javax.swing.JPanel {
         model.reload();
     }
 
-    /*
-    public void populateClassroomListData() {
-        Vector<String> teachers = new Vector<>();
-        List<Teacher> teachs = new ArrayList<>();
-        
-        for (Teacher t : classroom.getTeacherList()) {
-            teachers.add(t.getFirstName() + " " + t.getLastName());
-            teachs.add(t);
-        }
-
-        groupsList.setListData(teachers);
-        groupsList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-        // navigation commented out for now.. as its causing some problems while going back
-//        groupsList.addMouseListener(new MouseAdapter() {
-//            public void mouseClicked(MouseEvent e) {
-//                if (e.getClickCount() == 2) {
-//                    int index = groupsList.locationToIndex(e.getPoint());
-//                    
-//                    int teacherId = teachs.get(index).getId();
-//                    for (Teacher teacher : classroom.getTeacherList()) {
-//                        if (teacher.getId() == teacherId) {
-//                            TeacherInformationPanel teacherInfoPanel = new TeacherInformationPanel(container, teacher);
-//                            container.add(teacherInfoPanel);
-//                            CardLayout layout = (CardLayout) container.getLayout();
-//                            layout.next(container);
-//                            return;
-//                        }
-//                    }
-//                    System.out.println("Teacher not found");
-//                }
-//            }
-//        });
-
-    }
-     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
