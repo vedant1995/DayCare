@@ -36,15 +36,18 @@ public class StudentsPanel extends javax.swing.JPanel {
         this.container = container;
         this.school = school;
         buttonIconMap.put(immunizationButton, "/icons/immunization.png");
-        buttonIconMap.put(registrationButton, "/icons/renewal.png");
+        buttonIconMap.put(registrationButton, "/icons/renewal.png");        
 
         ImageHelper imageHelper = new ImageHelper();
 
         for (Map.Entry<JButton, String> button : buttonIconMap.entrySet()) {
             imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);
         }
-
+                
+        // imageHelper.scaleAndSetButtonIcon("/icons/add.png", addStudentButton, 31, 31);
+        
         populateTable();
+        
     }
 
     public void populateTable() {
@@ -84,8 +87,7 @@ public class StudentsPanel extends javax.swing.JPanel {
         immunizationButton = new javax.swing.JButton();
         registrationButton = new javax.swing.JButton();
         viewStudentButton = new javax.swing.JButton();
-
-        setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
+        deleteButton = new javax.swing.JButton();
 
         backButton.setText("< Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +176,13 @@ public class StudentsPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -190,6 +199,8 @@ public class StudentsPanel extends javax.swing.JPanel {
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(jPanel2Layout.createSequentialGroup()
                                     .addComponent(viewStudentButton)
+                                    .addGap(46, 46, 46)
+                                    .addComponent(deleteButton)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(addStudentButton))
                                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -216,11 +227,23 @@ public class StudentsPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewStudentButton)
-                    .addComponent(addStudentButton))
+                    .addComponent(addStudentButton)
+                    .addComponent(deleteButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        add(jPanel2);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -249,7 +272,7 @@ public class StudentsPanel extends javax.swing.JPanel {
         int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
         AbstractPerson selectedStudent = school.findStudentById(studentId);
         if (selectedStudent != null) {
-            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent);
+            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent, school);
             container.add(studentInfoPanel);
             CardLayout layout = (CardLayout) container.getLayout();
             layout.next(container);
@@ -273,10 +296,16 @@ public class StudentsPanel extends javax.swing.JPanel {
         layout.next(container);
     }//GEN-LAST:event_immunizationButtonActionPerformed
 
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addStudentButton;
     private javax.swing.JButton backButton;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton immunizationButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

@@ -171,6 +171,16 @@ public class Student extends AbstractPerson {
     public void setParentEmail(String parentEmail) {
         this.parentEmail = parentEmail;
     }
+
+    public int getClassId() {
+        return ClassId;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+    
+    
     
     
 

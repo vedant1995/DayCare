@@ -13,6 +13,7 @@ import java.awt.CardLayout;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import Model.School;
+import java.awt.event.WindowListener;
 
 /**
  *
@@ -22,7 +23,7 @@ public class Landing extends javax.swing.JFrame {
 
     private Admin admin = new Admin();
     private School school;
-    
+
     private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
 
     /**
@@ -37,6 +38,14 @@ public class Landing extends javax.swing.JFrame {
         // imageHelper.sca
         imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
         this.setLocationRelativeTo(null);
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                dB4OUtil.storeSystem(school);
+            }
+        });
+
     }
 
     /**
