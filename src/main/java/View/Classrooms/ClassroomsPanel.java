@@ -5,59 +5,17 @@
  */
 package View.Classrooms;
 
-import View.Teachers.*;
-import View.Students.*;
-import Model.AbstractPerson;
-import Model.Classroom;
-import Model.School;
-import Model.Student;
-import Model.Teacher;
-import java.awt.CardLayout;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author vedan
  */
 public class ClassroomsPanel extends javax.swing.JPanel {
 
-    private JPanel container;
-    private School school;
-
     /**
      * Creates new form StudentsPanel
      */
-    public ClassroomsPanel(JPanel container, School school) {
+    public ClassroomsPanel() {
         initComponents();
-        this.container = container;
-        this.school = school;
-        // school.showAll();
-        populateTable();
-    }
-
-    public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) classroomsTable.getModel();
-        model.setRowCount(0);
-        school.showAll();
-        // TODO: Add wage column to the table
-        for (Classroom classroom
-                : school.getClassroomList()) {
-            Object[] row = new Object[4];
-            row[0] = classroom.getId();
-            int low = classroom.getAgeRange()[0];
-            int high = classroom.getAgeRange()[1];
-            String range = String.valueOf(low) + " - " + String.valueOf(high);
-            row[1] = range;
-            row[2] = classroom.getCount();
-            row[3] = classroom.getSize();
-            model.addRow(row);
-        }
     }
 
     /**
@@ -80,11 +38,6 @@ public class ClassroomsPanel extends javax.swing.JPanel {
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.Y_AXIS));
 
         backButton.setText("< Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,11 +72,6 @@ public class ClassroomsPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(classroomsTable);
 
         viewDetailsButton.setText("View details");
-        viewDetailsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewDetailsButtonActionPerformed(evt);
-            }
-        });
         jPanel1.add(viewDetailsButton);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -160,48 +108,14 @@ public class ClassroomsPanel extends javax.swing.JPanel {
         add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void viewDetailsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewDetailsButtonActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = classroomsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            return;
-        }
-
-        // Get the teacherId of the selected row from the table
-        int classroomId = (int) classroomsTable.getValueAt(selectedRow, 0);
-
-        // AbstractPerson selectedTeacher = school.findTeacherById(teacherId);
-        for (Classroom classroom : school.getClassroomList()) {
-            if (classroom.getId() == classroomId) {
-                // ClassroomsInformationPanel classroomInfoPanel = new ClassroomsInformationPanel(container, classroom);
-                UpdatedClassroomsInformationPanel classroomInfoPanel = new UpdatedClassroomsInformationPanel(container, classroom);
-                container.add(classroomInfoPanel);
-                CardLayout layout = (CardLayout) container.getLayout();
-                layout.next(container);
-                return;
-            }
-
-        }
-        System.out.println("Teacher not found");
-        // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
-    }//GEN-LAST:event_viewDetailsButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
-    private javax.swing.JTable classroomsTable;
+    public javax.swing.JButton backButton;
+    public javax.swing.JTable classroomsTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton viewDetailsButton;
+    public javax.swing.JButton viewDetailsButton;
     // End of variables declaration//GEN-END:variables
 }
