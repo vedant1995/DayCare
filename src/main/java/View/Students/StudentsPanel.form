@@ -44,13 +44,13 @@
                                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Component id="jScrollPane1" alignment="1" min="-2" pref="356" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" min="-2" pref="393" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" pref="273" max="-2" attributes="0"/>
+                          <EmptySpace pref="48" max="32767" attributes="0"/>
+                          <Component id="jPanel3" min="-2" pref="209" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -63,18 +63,16 @@
                       <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="372" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="viewStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="addStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jScrollPane1" min="-2" pref="372" max="-2" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="viewStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="addStudentButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -109,12 +107,13 @@
             <Component class="javax.swing.JTable" name="studentsTable">
               <Properties>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="5" rowCount="4">
+                  <Table columnCount="6" rowCount="4">
                     <Column editable="false" title="ID" type="java.lang.Integer"/>
                     <Column editable="false" title="Age" type="java.lang.Integer"/>
                     <Column editable="false" title="Firstname" type="java.lang.String"/>
                     <Column editable="false" title="Lastname" type="java.lang.String"/>
                     <Column editable="false" title="GPA" type="java.lang.Double"/>
+                    <Column editable="false" title="TeacherId" type="java.lang.Integer"/>
                   </Table>
                 </Property>
               </Properties>
@@ -155,7 +154,9 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
             <Property name="columns" type="int" value="0"/>
+            <Property name="horizontalGap" type="int" value="5"/>
             <Property name="rows" type="int" value="2"/>
+            <Property name="verticalGap" type="int" value="10"/>
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JButton" name="immunizationButton">
