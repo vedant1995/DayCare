@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.DB4OUtil;
+package Business;
 
 import Model.FileUtil;
 import Model.RatioRule;

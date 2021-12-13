@@ -5,31 +5,14 @@
  */
 package View.Students;
 
-import View.Students.StudentsPanel;
-import Model.School;
-import Model.Student;
-import Model.StudentFactory;
-import java.awt.CardLayout;
-import java.awt.Component;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-
 /**
  *
  * @author vedan
  */
 public class AddStudentPanel extends javax.swing.JPanel {
 
-    JPanel container;
-    private School school;
-
-    /**
-     * Creates new form AddStudentPanel
-     */
-    public AddStudentPanel(JPanel container, School school) {
+    public AddStudentPanel() {
         initComponents();
-        this.school = school;
-        this.container = container;
     }
 
     /**
@@ -73,11 +56,6 @@ public class AddStudentPanel extends javax.swing.JPanel {
         jLabel1.setText("Add new student");
 
         backButton.setText("< Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         contentPanel.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Student's information"));
@@ -127,7 +105,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
                                     .addComponent(gpaTf)
                                     .addComponent(registrationTf, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)))))
                     .addComponent(jLabel3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
         );
         contentPanelLayout.setVerticalGroup(
             contentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,19 +149,17 @@ public class AddStudentPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(56, 56, 56))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(parentEmailTf, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(parentNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(352, 352, 352))
+                .addContainerGap()
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(parentEmailTf, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(parentNameTf, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(404, 404, 404))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -206,14 +182,13 @@ public class AddStudentPanel extends javax.swing.JPanel {
             .addGroup(headerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(headerPanelLayout.createSequentialGroup()
                         .addComponent(backButton)
                         .addGap(94, 94, 94)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(contentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(contentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         headerPanelLayout.setVerticalGroup(
             headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,11 +206,6 @@ public class AddStudentPanel extends javax.swing.JPanel {
 
         addStudentButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         addStudentButton.setText("Add");
-        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStudentButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -257,73 +227,16 @@ public class AddStudentPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
-        // TODO add your handling code here:
-        /**
-         * 1. Get all the info from the text fields 2. Use the student factory
-         * to get the Student object and populate the information from here
-         */
-
-        String id = idTextField.getText();
-        String age = ageText.getText();
-        String studentFirstName = studentFirstNameTf.getText();
-        String studentLastName = studentLastNameText.getText();        
-        String regDate = registrationTf.getText();
-        String gpa = gpaTf.getText();
-        String parentName = parentNameTf.getText();
-        String parentEmail = parentEmailTf.getText();
-
-        if (studentFirstName.equals("") || age.equals("") || id.equals("") || studentLastName.equals("") || regDate.equals("") || gpa.equals("") || parentName.equals("") || parentEmail.equals("")) {
-            JOptionPane.showMessageDialog(this,
-                    "Please fill all the required fields",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-//        String address = addressText.getText();
-//        String gender = genderCombo.getSelectedItem().toString();
-
-        String studentString = id + "," + age + "," + studentFirstName + "," + studentLastName + "," + regDate + "," + gpa + "," + parentName + "," + parentEmail;
-
-        try {
-            Student s = StudentFactory.getInstance().getObject(studentString);
-            school.addStudent(s);
-            // school.addAllStudentToCSV();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this,
-                    "Error. Unable to create the student",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        JOptionPane.showMessageDialog(this,
-                "Student successfully added.",
-                "Success",
-                JOptionPane.OK_OPTION);
-    }//GEN-LAST:event_addStudentButtonActionPerformed
-
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:        
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
-        Component[] componentArray = container.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        StudentsPanel spanel = (StudentsPanel) component;
-        spanel.populateTable();        
-    }//GEN-LAST:event_backButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addStudentButton;
-    private javax.swing.JTextField ageText;
-    private javax.swing.JButton backButton;
+    public javax.swing.JButton addStudentButton;
+    public javax.swing.JTextField ageText;
+    public javax.swing.JButton backButton;
     private javax.swing.JPanel contentPanel;
-    private javax.swing.JTextField gpaTf;
+    public javax.swing.JTextField gpaTf;
     private javax.swing.JPanel headerPanel;
     private javax.swing.JLabel idLabel;
-    private javax.swing.JTextField idTextField;
+    public javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -333,10 +246,10 @@ public class AddStudentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField parentEmailTf;
-    private javax.swing.JTextField parentNameTf;
-    private javax.swing.JTextField registrationTf;
-    private javax.swing.JTextField studentFirstNameTf;
-    private javax.swing.JTextField studentLastNameText;
+    public javax.swing.JTextField parentEmailTf;
+    public javax.swing.JTextField parentNameTf;
+    public javax.swing.JTextField registrationTf;
+    public javax.swing.JTextField studentFirstNameTf;
+    public javax.swing.JTextField studentLastNameText;
     // End of variables declaration//GEN-END:variables
 }

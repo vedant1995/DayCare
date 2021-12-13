@@ -5,9 +5,11 @@
  */
 package View;
 
-import Business.DB4OUtil.DB4OUtil;
+import Business.DB4OUtil;
+import Controller.ClassroomsPanelController;
 import View.Students.StudentsPanel;
-import Controller.ImageHelper;
+import Helper.ImageHelper;
+import Controller.StudentsPanelController;
 import Model.Admin;
 import Model.School;
 import View.Classrooms.ClassroomsPanel;
@@ -272,9 +274,10 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
         // TODO add your handling code here:
-        StudentsPanel dp = new StudentsPanel(dashboardContainer, school);
+        
+        StudentsPanelController spc = new StudentsPanelController(dashboardContainer, school);
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
-        dashboardContainer.add(dp);
+        dashboardContainer.add(spc.getStudentPanel());
         layout.next(dashboardContainer);
     }//GEN-LAST:event_studentsButtonActionPerformed
 
@@ -288,9 +291,9 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void classroomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classroomsButtonActionPerformed
         // TODO add your handling code here:
-        ClassroomsPanel rp = new ClassroomsPanel(dashboardContainer, school);
+        ClassroomsPanelController cpc = new ClassroomsPanelController(dashboardContainer, school);        
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
-        dashboardContainer.add(rp);
+        dashboardContainer.add(cpc.getClassroomsPanel());
         layout.next(dashboardContainer);
     }//GEN-LAST:event_classroomsButtonActionPerformed
 

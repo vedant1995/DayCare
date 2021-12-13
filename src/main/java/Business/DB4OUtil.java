@@ -1,4 +1,4 @@
-package Business.DB4OUtil;
+package Business;
 
 import Model.School;
 import com.db4o.Db4oEmbedded;
@@ -10,8 +10,7 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author rrheg
- * @author Lingfeng
+ * @author vedan
  */
 public class DB4OUtil {
 

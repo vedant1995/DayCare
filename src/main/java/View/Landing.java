@@ -5,15 +5,7 @@
  */
 package View;
 
-import Business.DB4OUtil.DB4OUtil;
-import Controller.ImageHelper;
-import Controller.SchoolController;
-import Model.Admin;
-import java.awt.CardLayout;
-import java.util.Arrays;
-import javax.swing.JOptionPane;
-import Model.School;
-import java.awt.event.WindowListener;
+import javax.swing.JPanel;
 
 /**
  *
@@ -21,31 +13,28 @@ import java.awt.event.WindowListener;
  */
 public class Landing extends javax.swing.JFrame {
 
-    private Admin admin = new Admin();
-    private School school;
-
-    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
-
     /**
      * Creates new form Welcome
      */
     public Landing() {
         initComponents();
-        // SchoolController sc = new SchoolController();
-        // this.school = sc.loadSchoolData();
-        school = dB4OUtil.retrieveSystem();
-        ImageHelper imageHelper = new ImageHelper();
-        // imageHelper.sca
-        imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
-        this.setLocationRelativeTo(null);
-
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                dB4OUtil.storeSystem(school);
+        // Set look and feel
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
             }
-        });
-
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -70,7 +59,6 @@ public class Landing extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 800));
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setLayout(new java.awt.CardLayout());
@@ -102,11 +90,6 @@ public class Landing extends javax.swing.JFrame {
 
         usernameText.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         usernameText.setText("admin");
-        usernameText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTextActionPerformed(evt);
-            }
-        });
 
         passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         passwordLabel.setText("Password:");
@@ -119,11 +102,6 @@ public class Landing extends javax.swing.JFrame {
         loginButton.setForeground(new java.awt.Color(249, 245, 245));
         loginButton.setText("Login");
         loginButton.setBorderPainted(false);
-        loginButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                loginButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout loginPanelLayout = new javax.swing.GroupLayout(loginPanel);
         loginPanel.setLayout(loginPanelLayout);
@@ -172,28 +150,6 @@ public class Landing extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTextActionPerformed
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
-        String username = usernameText.getText();
-        String password = String.valueOf(passwordField.getPassword());
-
-        if (admin.signIn(username, password)) {
-            DashboardPanel dp = new DashboardPanel(mainContainer, admin, school);
-            CardLayout layout = (CardLayout) mainContainer.getLayout();
-            mainContainer.add(dp);
-            layout.next(mainContainer);
-        } else {
-            JOptionPane.showMessageDialog(this,
-                    "Invalid username/password. Try again.",
-                    "Error Message",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_loginButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -237,15 +193,56 @@ public class Landing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel daycareLabel;
+    public javax.swing.JLabel daycareLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton loginButton;
+    public javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
-    private javax.swing.JPanel mainContainer;
-    private javax.swing.JPasswordField passwordField;
+    public javax.swing.JPanel mainContainer;
+    public javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel usernameLabel;
-    private javax.swing.JTextField usernameText;
+    public javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JLabel getDaycareLabel() {
+        return daycareLabel;
+    }
+
+    public void setDaycareLabel(javax.swing.JLabel daycareLabel) {
+        this.daycareLabel = daycareLabel;
+    }
+
+    public javax.swing.JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public void setLoginButton(javax.swing.JButton loginButton) {
+        this.loginButton = loginButton;
+    }
+
+    public javax.swing.JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public void setPasswordField(javax.swing.JPasswordField passwordField) {
+        this.passwordField = passwordField;
+    }
+
+    public javax.swing.JTextField getUsernameText() {
+        return usernameText;
+    }
+
+    public void setUsernameText(javax.swing.JTextField usernameText) {
+        this.usernameText = usernameText;
+    }
+
+    public JPanel getMainContainer() {
+        return mainContainer;
+    }
+
+    public void setMainContainer(JPanel mainContainer) {
+        this.mainContainer = mainContainer;
+    }
+
 }

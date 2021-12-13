@@ -5,53 +5,17 @@
  */
 package View.Students;
 
-import Model.AbstractPerson;
-import Model.School;
-import Model.Student;
-import Model.Vax;
-import java.awt.CardLayout;
-import java.util.List;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
-
 /**
  *
  * @author vedan
  */
 public class ImmunizationPanel extends javax.swing.JPanel {
 
-    private JPanel container;
-    private School school;
-    private List<AbstractPerson> studentsList;
-
     /**
      * Creates new form ImmunizationPanel
      */
-    public ImmunizationPanel(JPanel container, School school) {
+    public ImmunizationPanel() {
         initComponents();
-        this.container = container;
-        this.school = school;
-        populateTable();
-    }
-
-    public void populateTable() {
-        immuTable.setAutoCreateRowSorter(true);
-        DefaultTableModel model = (DefaultTableModel) immuTable.getModel();
-        model.setRowCount(0);
-
-        for (AbstractPerson student : school.getStudentList()) {
-            Object[] row = new Object[6];
-            Student s = (Student) student;
-            for (Vax v : s.getVaxList()) {
-                row[0] = s.getId();
-                row[1] = student.getFirstName() + " " + s.getLastName();
-                row[2] = v.getName();
-                row[3] = v.getNoOfDoses();
-                row[4] = v.getLastDoseDate().toString();
-                row[5] = v.getNextDoseDate().toString();
-                model.addRow(row);
-            }
-        }
     }
 
     /**
@@ -97,11 +61,6 @@ public class ImmunizationPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(immuTable);
 
         backButton.setText("< Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         immunizationLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         immunizationLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -119,12 +78,9 @@ public class ImmunizationPanel extends javax.swing.JPanel {
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,17 +98,10 @@ public class ImmunizationPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
-    }//GEN-LAST:event_backButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
-    private javax.swing.JTable immuTable;
+    public javax.swing.JButton backButton;
+    public javax.swing.JTable immuTable;
     private javax.swing.JLabel immunizationLabel;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
