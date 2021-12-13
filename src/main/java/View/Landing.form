@@ -149,9 +149,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="admin"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="usernameTextActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="passwordLabel">
                   <Properties>
@@ -183,9 +180,6 @@
                     <Property name="text" type="java.lang.String" value="Login"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButtonActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
