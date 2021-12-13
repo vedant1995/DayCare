@@ -122,6 +122,8 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         classroomsButton = new javax.swing.JButton();
 
+        setMinimumSize(new java.awt.Dimension(1100, 800));
+
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -149,7 +151,7 @@ public class DashboardPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(daycareLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 521, Short.MAX_VALUE)
                 .addComponent(userGreetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(logoutButton)
@@ -191,11 +193,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         studentsTile.setLayout(studentsTileLayout);
         studentsTileLayout.setHorizontalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
         );
         studentsTileLayout.setVerticalGroup(
             studentsTileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+            .addComponent(studentsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
         );
 
         homePanel.add(studentsTile);
@@ -239,11 +241,11 @@ public class DashboardPanel extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE)
+            .addComponent(classroomsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
         );
 
         homePanel.add(jPanel5);
@@ -260,7 +262,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+            .addComponent(jSplitPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
 

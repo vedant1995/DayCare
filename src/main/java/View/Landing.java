@@ -59,8 +59,11 @@ public class Landing extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1100, 800));
+        setResizable(false);
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
+        mainContainer.setMinimumSize(new java.awt.Dimension(1100, 800));
         mainContainer.setLayout(new java.awt.CardLayout());
 
         java.awt.GridBagLayout jLayeredPane1Layout = new java.awt.GridBagLayout();
