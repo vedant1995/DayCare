@@ -3,6 +3,7 @@ package Model;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import static java.util.stream.Collectors.toList;
 
 public class School {
     private List<Classroom> ClassroomList = new ArrayList<>();
@@ -68,6 +69,15 @@ public class School {
                 return p;
         }
         return null;
+    }
+    
+    public void deleteStudentById(int studentId) {
+        List<Student> students = StudentList
+            .stream()
+            .filter(i -> i.getId()!=studentId)            
+            .collect(toList());
+        
+        this.StudentList = students;        
     }
 
 //    private void addToClassroom(Teacher t){

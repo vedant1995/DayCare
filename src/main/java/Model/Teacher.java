@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import static java.util.stream.Collectors.toList;
 
 public class Teacher extends AbstractPerson {
 
@@ -78,6 +79,15 @@ public class Teacher extends AbstractPerson {
 
     public LocalDate getReviewDate(){
         return this.ReviewDate;
+    }
+    
+    public void deleteStudentById(int id){                
+        List<Student> students = StudentList
+            .stream()
+            .filter(i -> i.getId()!=id)            
+            .collect(toList());
+        
+        this.StudentList = students;        
     }
 
     public int getWage(){return this.Wage;}

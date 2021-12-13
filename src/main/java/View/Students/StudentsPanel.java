@@ -7,14 +7,18 @@ package View.Students;
 
 import Controller.ImageHelper;
 import Model.AbstractPerson;
+import Model.Classroom;
 import Model.School;
 import Model.Student;
+import Model.Teacher;
 import java.awt.CardLayout;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import static java.util.stream.Collectors.toList;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -36,18 +40,17 @@ public class StudentsPanel extends javax.swing.JPanel {
         this.container = container;
         this.school = school;
         buttonIconMap.put(immunizationButton, "/icons/immunization.png");
-        buttonIconMap.put(registrationButton, "/icons/renewal.png");        
+        buttonIconMap.put(registrationButton, "/icons/renewal.png");
 
         ImageHelper imageHelper = new ImageHelper();
 
         for (Map.Entry<JButton, String> button : buttonIconMap.entrySet()) {
             imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);
         }
-                
+
         // imageHelper.scaleAndSetButtonIcon("/icons/add.png", addStudentButton, 31, 31);
-        
         populateTable();
-        
+
     }
 
     public void populateTable() {
@@ -196,16 +199,17 @@ public class StudentsPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(viewStudentButton)
-                                    .addGap(46, 46, 46)
-                                    .addComponent(deleteButton)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(addStudentButton))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(176, 176, 176)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(83, 83, 83))
+                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(viewStudentButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(43, 43, 43)))
+                                .addComponent(addStudentButton))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -228,7 +232,7 @@ public class StudentsPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewStudentButton)
                     .addComponent(addStudentButton)
-                    .addComponent(deleteButton))
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -298,7 +302,34 @@ public class StudentsPanel extends javax.swing.JPanel {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        
+        int selectedRow = studentsTable.getSelectedRow();
+
+        if (selectedRow < 0) {
+            return;
+        }
+
+        int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
+        int teacherId = (int) studentsTable.getValueAt(selectedRow, 5);
+
+        try {
+            school.deleteStudentById(studentId);
+            
+            for(Classroom room : school.getClassroomList()) {
+                for(Teacher t: room.getTeacherList()) {
+                    if(t.getId() == teacherId)
+                        t.deleteStudentById(studentId);
+                }
+            }                    
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        populateTable();
+        JOptionPane.showMessageDialog(this,
+                "Student deleted.",
+                "Success",
+                JOptionPane.OK_OPTION);        
+
     }//GEN-LAST:event_deleteButtonActionPerformed
 
 
