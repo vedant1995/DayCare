@@ -289,7 +289,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
         try {
             Student s = StudentFactory.getInstance().getObject(studentString);
             school.addStudent(s);
-            school.addAllStudentToCSV();
+            // school.addAllStudentToCSV();
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this,
                     "Error. Unable to create the student",

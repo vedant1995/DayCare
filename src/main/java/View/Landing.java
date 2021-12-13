@@ -5,6 +5,7 @@
  */
 package View;
 
+import Business.DB4OUtil.DB4OUtil;
 import Controller.ImageHelper;
 import Controller.SchoolController;
 import Model.Admin;
@@ -21,13 +22,17 @@ public class Landing extends javax.swing.JFrame {
 
     private Admin admin = new Admin();
     private School school;
+    
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+
     /**
      * Creates new form Welcome
      */
     public Landing() {
         initComponents();
-        SchoolController sc = new SchoolController();
-        this.school = sc.loadSchoolData();
+        // SchoolController sc = new SchoolController();
+        // this.school = sc.loadSchoolData();
+        school = dB4OUtil.retrieveSystem();
         ImageHelper imageHelper = new ImageHelper();
         // imageHelper.sca
         imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
