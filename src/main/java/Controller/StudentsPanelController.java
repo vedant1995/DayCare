@@ -134,8 +134,8 @@ public class StudentsPanelController {
         int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
         AbstractPerson selectedStudent = school.findStudentById(studentId);
         if (selectedStudent != null) {
-            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent, school);
-            container.add(studentInfoPanel);
+            StudentsInformationController sic = new StudentsInformationController(container, selectedStudent, school, this);            
+            container.add(sic.getStudentInformationPanel());
             CardLayout layout = (CardLayout) container.getLayout();
             layout.next(container);
         }

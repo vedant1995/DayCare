@@ -93,11 +93,6 @@ public class StudentInformationPanel extends javax.swing.JPanel {
         jLabel1.setText("Student info");
 
         backButton.setText("< Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -267,17 +262,6 @@ public class StudentInformationPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
-        Component[] componentArray = container.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        StudentsPanel spanel = (StudentsPanel) component;
-        // spanel.populateTable();
-    }//GEN-LAST:event_backButtonActionPerformed
-
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
         List<JTextField> tfList = new ArrayList<JTextField>(Arrays.asList(firstNameTf, lastNameTf, ageTf, idTf, registrationTf1, parentNameTf, parentEmailTf, gpaTf));
@@ -343,7 +327,7 @@ public class StudentInformationPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ageTf;
-    private javax.swing.JButton backButton;
+    public javax.swing.JButton backButton;
     private javax.swing.JTextField firstNameTf;
     private javax.swing.JTextField gpaTf;
     private javax.swing.JTextField idTf;
