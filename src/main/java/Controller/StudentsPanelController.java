@@ -149,9 +149,9 @@ public class StudentsPanelController {
     }
 
     private void showImmunizationInfo() {
-        ImmunizationPanel rp = new ImmunizationPanel(container, school);
+        ImmunizationPanelController ipc = new ImmunizationPanelController(container, school, this);
         CardLayout layout = (CardLayout) container.getLayout();
-        container.add(rp);
+        container.add(ipc.getImmunizationPanel());
         layout.next(container);
     }
 
