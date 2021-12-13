@@ -46,6 +46,7 @@ public class TeachersPanel extends javax.swing.JPanel {
     }
 
     public void populateTable() {
+        teachersTable.setAutoCreateRowSorter(true);
         DefaultTableModel model = (DefaultTableModel) teachersTable.getModel();
         model.setRowCount(0);
         school.showAll();
