@@ -56,13 +56,14 @@ public class TeachersPanel extends javax.swing.JPanel {
             // TODO: Display classroom id associated with the teacher if any?
             // Map<Teacher, Integer> teacherMap = new HashMap<>();
             for (Teacher teacher : teachers) {
-                Object[] row = new Object[6];
+                Object[] row = new Object[7];
                 row[0] = teacher.getId();
                 row[1] = teacher.getAge();
                 row[2] = teacher.getFirstName();
                 row[3] = teacher.getLastName();
                 row[4] = teacher.getCount();
                 row[5] = teacher.getSize();
+                row[6] = teacher.getClassroomId();
                 model.addRow(row);
             }
         }
@@ -101,20 +102,20 @@ public class TeachersPanel extends javax.swing.JPanel {
 
         teachersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Age", "Firstname", "Lastname", "Count", "Size"
+                "ID", "Age", "Firstname", "Lastname", "Count", "Size", "ClassroomId"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
