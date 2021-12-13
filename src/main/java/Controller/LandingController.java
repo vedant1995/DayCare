@@ -43,11 +43,11 @@ public class LandingController {
         
         
         // Get JComponents from the form that the controller wants to manipulate
-        this.daycareLabel = form.getDaycareLabel();
-        this.mainContainer = form.getMainContainer();
-        this.usernameText =  form.getUsernameText();
-        this.passwordField = form.getPasswordField();
-        this.loginButton = form.getLoginButton();        
+        this.daycareLabel = form.daycareLabel;
+        this.mainContainer = form.mainContainer;
+        this.usernameText =  form.usernameText;
+        this.passwordField = form.passwordField;
+        this.loginButton = form.loginButton;        
         
         buildIconsForLandingPage();
         
@@ -59,7 +59,7 @@ public class LandingController {
             }
         });
         
-        form.getLoginButton().addActionListener(e -> {
+        loginButton.addActionListener(e -> {
             loginToApplication();
         });
         
@@ -67,7 +67,7 @@ public class LandingController {
     
     private void buildIconsForLandingPage() {
          ImageHelper imageHelper = new ImageHelper();         
-         imageHelper.scaleAndSetLabelIcon("/icons/day.png", form.getDaycareLabel(), 100, 100, "Daycare logo");
+         imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
     }
     
     private void loginToApplication() {
