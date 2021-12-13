@@ -18,6 +18,23 @@ public class Landing extends javax.swing.JFrame {
      */
     public Landing() {
         initComponents();
+        // Set look and feel
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Landing.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -42,7 +59,6 @@ public class Landing extends javax.swing.JFrame {
         loginButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1024, 800));
 
         mainContainer.setBackground(new java.awt.Color(255, 255, 255));
         mainContainer.setLayout(new java.awt.CardLayout());
@@ -177,16 +193,16 @@ public class Landing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel daycareLabel;
+    public javax.swing.JLabel daycareLabel;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton loginButton;
+    public javax.swing.JButton loginButton;
     private javax.swing.JPanel loginPanel;
-    private javax.swing.JPanel mainContainer;
-    private javax.swing.JPasswordField passwordField;
+    public javax.swing.JPanel mainContainer;
+    public javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel usernameLabel;
-    private javax.swing.JTextField usernameText;
+    public javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
 
     public javax.swing.JLabel getDaycareLabel() {
