@@ -5,7 +5,7 @@
  */
 package View;
 
-import Helper.DB4OUtil;
+import Business.DB4OUtil;
 import Controller.ClassroomsPanelController;
 import View.Students.StudentsPanel;
 import Helper.ImageHelper;
