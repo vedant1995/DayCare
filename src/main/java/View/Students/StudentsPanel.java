@@ -5,22 +5,7 @@
  */
 package View.Students;
 
-import Controller.ImageHelper;
-import Model.AbstractPerson;
-import Model.Classroom;
-import Model.School;
-import Model.Student;
-import Model.Teacher;
-import java.awt.CardLayout;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import static java.util.stream.Collectors.toList;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -28,46 +13,11 @@ import javax.swing.table.DefaultTableModel;
  */
 public class StudentsPanel extends javax.swing.JPanel {
 
-    private JPanel container;
-    private School school;
-    private Map<JButton, String> buttonIconMap = new HashMap<>();
-
     /**
      * Creates new form StudentsPanel
      */
-    public StudentsPanel(JPanel container, School school) {
+    public StudentsPanel() {
         initComponents();
-        this.container = container;
-        this.school = school;
-        buttonIconMap.put(immunizationButton, "/icons/immunization.png");
-        buttonIconMap.put(registrationButton, "/icons/renewal.png");
-
-        ImageHelper imageHelper = new ImageHelper();
-
-        for (Map.Entry<JButton, String> button : buttonIconMap.entrySet()) {
-            imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);
-        }
-
-        // imageHelper.scaleAndSetButtonIcon("/icons/add.png", addStudentButton, 31, 31);
-        populateTable();
-
-    }
-
-    public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel) studentsTable.getModel();
-        model.setRowCount(0);
-
-        for (AbstractPerson student : school.getStudentList()) {
-            Object[] row = new Object[6];
-            Student s = (Student) student;
-            row[0] = student.getId();
-            row[1] = student.getAge();
-            row[2] = student.getFirstName();
-            row[3] = student.getLastName();
-            row[4] = s.getGPA();
-            row[5] = s.getTeacherId();
-            model.addRow(row);
-        }
     }
 
     /**
@@ -93,11 +43,6 @@ public class StudentsPanel extends javax.swing.JPanel {
         deleteButton = new javax.swing.JButton();
 
         backButton.setText("< Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -143,11 +88,6 @@ public class StudentsPanel extends javax.swing.JPanel {
         );
 
         addStudentButton.setText("Add student");
-        addStudentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStudentButtonActionPerformed(evt);
-            }
-        });
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel3.setLayout(new java.awt.GridLayout(2, 0, 5, 10));
@@ -155,36 +95,16 @@ public class StudentsPanel extends javax.swing.JPanel {
         immunizationButton.setBackground(java.awt.SystemColor.inactiveCaption);
         immunizationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         immunizationButton.setText("Immunization");
-        immunizationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                immunizationButtonActionPerformed(evt);
-            }
-        });
         jPanel3.add(immunizationButton);
 
         registrationButton.setBackground(java.awt.SystemColor.inactiveCaption);
         registrationButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         registrationButton.setText("Registration ");
-        registrationButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrationButtonActionPerformed(evt);
-            }
-        });
         jPanel3.add(registrationButton);
 
         viewStudentButton.setText("View details");
-        viewStudentButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewStudentButtonActionPerformed(evt);
-            }
-        });
 
         deleteButton.setText("Delete");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -229,10 +149,11 @@ public class StudentsPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewStudentButton)
-                    .addComponent(addStudentButton)
-                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(viewStudentButton)
+                        .addComponent(addStudentButton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -250,101 +171,19 @@ public class StudentsPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
-        container.remove(this);
-        CardLayout layout = (CardLayout) container.getLayout();
-        layout.previous(container);
-    }//GEN-LAST:event_backButtonActionPerformed
-
-    private void addStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStudentButtonActionPerformed
-        // TODO add your handling code here:
-        AddStudentPanel p = new AddStudentPanel(container, school);
-        CardLayout layout = (CardLayout) container.getLayout();
-        container.add(p);
-        layout.next(container);
-    }//GEN-LAST:event_addStudentButtonActionPerformed
-
-    private void viewStudentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewStudentButtonActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = studentsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            return;
-        }
-
-        int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
-        AbstractPerson selectedStudent = school.findStudentById(studentId);
-        if (selectedStudent != null) {
-            StudentInformationPanel studentInfoPanel = new StudentInformationPanel(container, selectedStudent, school);
-            container.add(studentInfoPanel);
-            CardLayout layout = (CardLayout) container.getLayout();
-            layout.next(container);
-        }
-        // AbstractPerson selectedStudent = (AbstractPerson) studentsTable.getValueAt(selectedRow, 4);
-    }//GEN-LAST:event_viewStudentButtonActionPerformed
-
-    private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrationButtonActionPerformed
-        // TODO add your handling code here:
-        RegistrationPanel rp = new RegistrationPanel(container, school);
-        CardLayout layout = (CardLayout) container.getLayout();
-        container.add(rp);
-        layout.next(container);
-    }//GEN-LAST:event_registrationButtonActionPerformed
-
-    private void immunizationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_immunizationButtonActionPerformed
-        // TODO add your handling code here:
-        ImmunizationPanel rp = new ImmunizationPanel(container, school);
-        CardLayout layout = (CardLayout) container.getLayout();
-        container.add(rp);
-        layout.next(container);
-    }//GEN-LAST:event_immunizationButtonActionPerformed
-
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = studentsTable.getSelectedRow();
-
-        if (selectedRow < 0) {
-            return;
-        }
-
-        int studentId = (int) studentsTable.getValueAt(selectedRow, 0);
-        int teacherId = (int) studentsTable.getValueAt(selectedRow, 5);
-
-        try {
-            school.deleteStudentById(studentId);
-            
-            for(Classroom room : school.getClassroomList()) {
-                for(Teacher t: room.getTeacherList()) {
-                    if(t.getId() == teacherId)
-                        t.deleteStudentById(studentId);
-                }
-            }                    
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        populateTable();
-        JOptionPane.showMessageDialog(this,
-                "Student deleted.",
-                "Success",
-                JOptionPane.OK_OPTION);        
-
-    }//GEN-LAST:event_deleteButtonActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addStudentButton;
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JButton immunizationButton;
+    public javax.swing.JButton addStudentButton;
+    public javax.swing.JButton backButton;
+    public javax.swing.JButton deleteButton;
+    public javax.swing.JButton immunizationButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton registrationButton;
-    private javax.swing.JTable studentsTable;
-    private javax.swing.JButton viewStudentButton;
+    public javax.swing.JButton registrationButton;
+    public javax.swing.JTable studentsTable;
+    public javax.swing.JButton viewStudentButton;
     // End of variables declaration//GEN-END:variables
 }
