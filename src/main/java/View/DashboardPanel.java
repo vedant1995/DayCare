@@ -48,11 +48,10 @@ public class DashboardPanel extends javax.swing.JPanel {
         buttonIconMap.put(studentsButton, "/icons/student.png");
         buttonIconMap.put(teachersButton, "/icons/teacher.png");
         buttonIconMap.put(classroomsButton, "/icons/classroom.png");
-        
-        
 
         ImageHelper imageHelper = new ImageHelper();
 
+        setDayCareLogo();
         for (Map.Entry<JButton, String> button : buttonIconMap.entrySet()) {
             imageHelper.scaleAndSetButtonIcon(button.getValue(), button.getKey(), 100, 100);
         }
@@ -62,6 +61,32 @@ public class DashboardPanel extends javax.swing.JPanel {
         this.school = school;
         userGreetingLabel.setText("Hello, " + admin.getName());
         // teacherLabelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icons/teacher64.png")));
+    }
+
+    private void setDayCareLogo() {
+
+        ImageHelper imageHelper = new ImageHelper();
+        // imageHelper.sca
+        // imageHelper.scaleAndSetLabelIcon("/icons/day.png", daycareLabel, 100, 100, "Daycare logo");
+        // this.setLocationRelativeTo(null);
+
+        ImageIcon imageIcon = createImageIcon("/icons/day.png", "Daycare logo");
+        Image image = imageIcon.getImage();
+        Image newimg = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(newimg);
+        daycareLabel.setIcon(imageIcon);
+        // daycareLabel.setVerticalTextPosition(SwingConstants.RIGHT);
+        // daycareLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+    }
+
+    private ImageIcon createImageIcon(String path, String description) {
+        URL imgURL = getClass().getResource(path);
+        if (imgURL != null) {
+            return new ImageIcon(imgURL, description);
+        } else {
+            System.err.println("Couldn't find file: " + path);
+            return null;
+        }
     }
 
     private void tileMouseExited(java.awt.event.MouseEvent evt) {
