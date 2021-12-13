@@ -5,10 +5,87 @@
  */
 package Controller;
 
+import Business.DB4OUtil.DB4OUtil;
+import Model.Admin;
+import Model.School;
+import View.DashboardPanel;
+import View.Landing;
+import java.awt.CardLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
 /**
  *
  * @author vedan
  */
 public class LandingController {
+
+    private School school;
+    private Admin admin = new Admin();    
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private Landing form;
+    private JLabel daycareLabel; 
+    private JButton loginButton;    
+    private JPanel mainContainer;
+    private JPasswordField passwordField;        
+    private JTextField usernameText;
+    
+    public LandingController() {      
+        school = dB4OUtil.retrieveSystem();        
+        form = new Landing();
+        form.pack();
+        form.setVisible(true);
+        form.setLocationRelativeTo(null);
+        
+        // Get JComponents from the form that the controller wants to manipulate
+        this.daycareLabel = form.getDaycareLabel();
+        this.mainContainer = form.getMainContainer();
+        this.usernameText =  form.getUsernameText();
+        this.passwordField = form.getPasswordField();
+        this.loginButton = form.getLoginButton();        
+        
+        // Add event listener to perform action on close (X) operation
+        form.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                dB4OUtil.storeSystem(school);
+            }
+        });
+        
+        form.getLoginButton().addActionListener(e -> {
+            loginToApplication();
+        });
+        
+    }
+    
+    private void buildIconsForLandingPage(Landing form) {
+         ImageHelper imageHelper = new ImageHelper();         
+         imageHelper.scaleAndSetLabelIcon("/icons/day.png", form.getDaycareLabel(), 100, 100, "Daycare logo");
+    }
+    
+    private void loginToApplication() {
+        String username = usernameText.getText();        
+        String password = String.valueOf(passwordField.getPassword());
+
+        if (admin.signIn(username, password)) {
+            DashboardPanel dp = new DashboardPanel(mainContainer, admin, school);
+            CardLayout layout = (CardLayout) mainContainer.getLayout();
+            mainContainer.add(dp);
+            layout.next(mainContainer);
+        } else {
+            JOptionPane.showMessageDialog(form,
+                    "Invalid username/password. Try again.",
+                    "Error Message",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public static void main(String[] args) {
+        LandingController lc = new LandingController();
+    }
     
 }
