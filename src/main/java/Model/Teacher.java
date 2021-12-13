@@ -136,6 +136,28 @@ public class Teacher extends AbstractPerson {
         this.size = size;
     }
 
+    public int getClassroomId() {
+        return ClassroomId;
+    }
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
+    }
+
+    public void setWage(int Wage) {
+        this.Wage = Wage;
+    }
+
+    public void setReviewDate(LocalDate ReviewDate) {
+        this.ReviewDate = ReviewDate;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "Teacher{" + "Id=" + Id + ", Age=" + Age + ", LastName=" + LastName + ", FirstName=" + FirstName + ", Wage=" + Wage + ", count=" + count + ", size=" + size + '}';
