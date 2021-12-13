@@ -102,6 +102,7 @@ public class StudentsPanelController {
     }
 
     public void populateTable() {
+        studentsTable.setAutoCreateRowSorter(true);
         DefaultTableModel model = (DefaultTableModel) studentsTable.getModel();
         model.setRowCount(0);
 

@@ -47,11 +47,8 @@ public class AddStudentPanel extends javax.swing.JPanel {
         parentEmailTf = new javax.swing.JTextField();
         addStudentButton = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1100, 700));
         setPreferredSize(new java.awt.Dimension(1100, 700));
-
-        headerPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -59,7 +56,6 @@ public class AddStudentPanel extends javax.swing.JPanel {
 
         backButton.setText("< Back");
 
-        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
         contentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Student's information"));
         contentPanel.setToolTipText("");
         contentPanel.setName(""); // NOI18N
@@ -139,7 +135,6 @@ public class AddStudentPanel extends javax.swing.JPanel {
                 .addContainerGap(23, Short.MAX_VALUE))
         );
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Parent's information"));
 
         jLabel4.setText("Name*");

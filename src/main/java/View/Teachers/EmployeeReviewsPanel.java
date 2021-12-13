@@ -12,6 +12,7 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import static java.util.stream.Collectors.toList;
 import javax.swing.JPanel;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
  * @author vedan
  */
 public class EmployeeReviewsPanel extends javax.swing.JPanel {
-
+    
     private JPanel container;
     private List<Teacher> teachers;
     private School school;
@@ -33,15 +34,20 @@ public class EmployeeReviewsPanel extends javax.swing.JPanel {
         this.school = school;
         populateTeacherReviewDates();
     }
-
+    
     private void populateTeacherReviewDates() {
-
+        List<Teacher> allTeachers = new ArrayList<>();
+        
         for (Classroom classroom : school.getClassroomList()) {
             for (Teacher t : classroom.getTeacherList()) {
-                reviewTextArea.append(t.getFirstName() + " " + t.getLastName() + " review due on " + t.getReviewDate().toString() + "\n");
+                allTeachers.add(t);
+                // reviewTextArea.append(t.getFirstName() + " " + t.getLastName() + " review due on " + t.getReviewDate().toString() + "\n");
             }
         }
-
+        
+        List<Teacher> sorted = allTeachers.stream().sorted(Comparator.comparing(Teacher::getReviewDate)).collect(toList());
+        
+        sorted.forEach(t -> reviewTextArea.append(t.getFirstName() + " " + t.getLastName() + " review due on " + t.getReviewDate().toString() + "\n"));        
     }
 
     /**
@@ -61,10 +67,13 @@ public class EmployeeReviewsPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1100, 700));
 
         reviewTextArea.setColumns(20);
+        reviewTextArea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         reviewTextArea.setRows(5);
+        reviewTextArea.setText("\n");
+        reviewTextArea.setMargin(new java.awt.Insets(5, 20, 20, 5));
         jScrollPane1.setViewportView(reviewTextArea);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setText("Upcoming employee reviews");
 
         backButton.setText("< Back");
@@ -85,7 +94,7 @@ public class EmployeeReviewsPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backButton)
                         .addGap(292, 292, 292)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(81, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,7 +106,7 @@ public class EmployeeReviewsPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

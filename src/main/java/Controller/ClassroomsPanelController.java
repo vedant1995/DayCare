@@ -56,6 +56,7 @@ public class ClassroomsPanelController {
     }
 
     public void populateTable() {
+        classroomsTable.setAutoCreateRowSorter(true);
         DefaultTableModel model = (DefaultTableModel) classroomsTable.getModel();
         model.setRowCount(0);
         school.showAll();
