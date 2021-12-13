@@ -41,12 +41,15 @@ public class LandingController {
         form.setVisible(true);
         form.setLocationRelativeTo(null);
         
+        
         // Get JComponents from the form that the controller wants to manipulate
         this.daycareLabel = form.getDaycareLabel();
         this.mainContainer = form.getMainContainer();
         this.usernameText =  form.getUsernameText();
         this.passwordField = form.getPasswordField();
         this.loginButton = form.getLoginButton();        
+        
+        buildIconsForLandingPage();
         
         // Add event listener to perform action on close (X) operation
         form.addWindowListener(new java.awt.event.WindowAdapter() {
@@ -62,7 +65,7 @@ public class LandingController {
         
     }
     
-    private void buildIconsForLandingPage(Landing form) {
+    private void buildIconsForLandingPage() {
          ImageHelper imageHelper = new ImageHelper();         
          imageHelper.scaleAndSetLabelIcon("/icons/day.png", form.getDaycareLabel(), 100, 100, "Daycare logo");
     }
