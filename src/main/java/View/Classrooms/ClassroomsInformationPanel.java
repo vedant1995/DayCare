@@ -35,7 +35,7 @@ import org.jfree.data.general.PieDataset;
  *
  * @author vedan
  */
-public class UpdatedClassroomsInformationPanel extends javax.swing.JPanel {
+public class ClassroomsInformationPanel extends javax.swing.JPanel {
 
     private JPanel container;
     private Classroom classroom;
@@ -43,7 +43,7 @@ public class UpdatedClassroomsInformationPanel extends javax.swing.JPanel {
     /**
      * Creates new form StudentInformationPanel
      */
-    public UpdatedClassroomsInformationPanel(JPanel container, Classroom classroom) {
+    public ClassroomsInformationPanel(JPanel container, Classroom classroom) {
         initComponents();
         this.container = container;
         this.classroom = classroom;

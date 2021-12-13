@@ -8,7 +8,7 @@ package Controller;
 import Model.Classroom;
 import Model.School;
 import View.Classrooms.ClassroomsPanel;
-import View.Classrooms.UpdatedClassroomsInformationPanel;
+import View.Classrooms.ClassroomsInformationPanel;
 import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -93,7 +93,7 @@ public class ClassroomsPanelController {
         for (Classroom classroom : school.getClassroomList()) {
             if (classroom.getId() == classroomId) {
                 // ClassroomsInformationPanel classroomInfoPanel = new ClassroomsInformationPanel(container, classroom);
-                UpdatedClassroomsInformationPanel classroomInfoPanel = new UpdatedClassroomsInformationPanel(container, classroom);
+                ClassroomsInformationPanel classroomInfoPanel = new ClassroomsInformationPanel(container, classroom);
                 container.add(classroomInfoPanel);
                 CardLayout layout = (CardLayout) container.getLayout();
                 layout.next(container);
