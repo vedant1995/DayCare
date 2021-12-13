@@ -12,6 +12,7 @@ import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import static java.util.stream.Collectors.toList;
 import javax.swing.JPanel;
 
 /**
@@ -19,7 +20,7 @@ import javax.swing.JPanel;
  * @author vedan
  */
 public class EmployeeReviewsPanel extends javax.swing.JPanel {
-
+    
     private JPanel container;
     private List<Teacher> teachers;
     private School school;
@@ -33,15 +34,20 @@ public class EmployeeReviewsPanel extends javax.swing.JPanel {
         this.school = school;
         populateTeacherReviewDates();
     }
-
+    
     private void populateTeacherReviewDates() {
-
+        List<Teacher> allTeachers = new ArrayList<>();
+        
         for (Classroom classroom : school.getClassroomList()) {
             for (Teacher t : classroom.getTeacherList()) {
-                reviewTextArea.append(t.getFirstName() + " " + t.getLastName() + " review due on " + t.getReviewDate().toString() + "\n");
+                allTeachers.add(t);
+                // reviewTextArea.append(t.getFirstName() + " " + t.getLastName() + " review due on " + t.getReviewDate().toString() + "\n");
             }
         }
-
+        
+        List<Teacher> sorted = allTeachers.stream().sorted(Comparator.comparing(Teacher::getReviewDate)).collect(toList());
+        
+        sorted.forEach(t -> reviewTextArea.append(t.getFirstName() + " " + t.getLastName() + " review due on " + t.getReviewDate().toString() + "\n"));        
     }
 
     /**
