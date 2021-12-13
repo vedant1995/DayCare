@@ -92,6 +92,7 @@ public class School {
                     Teacher t = generateTeacher(r.getGroupSize(),c.getId());
                     s.setClassId(c.getId());
                     t.addStudent(s);
+                    c.addTeacher(t);
                     for(int i = 0; i < r.getClassroomSize()-1; i++){
                         c.addTeacher(generateTeacher(r.getGroupSize(),c.getId()));
 
@@ -122,6 +123,7 @@ public class School {
                 Teacher t = generateTeacher(r.getGroupSize(),c.getId());
                 s.setClassId(c.getId());
                 t.addStudent(s);
+                c.addTeacher(t);
                 for(int i = 0; i < r.getClassroomSize(); i++){
                     c.addTeacher(generateTeacher(r.getGroupSize(),c.getId()));
 
