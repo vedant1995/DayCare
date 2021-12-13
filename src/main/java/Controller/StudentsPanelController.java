@@ -187,9 +187,9 @@ public class StudentsPanelController {
     }
 
     private void addStudent() {
-        AddStudentPanel p = new AddStudentPanel(container, school);
+        AddStudentController asc = new AddStudentController(container, school, this);        
         CardLayout layout = (CardLayout) container.getLayout();
-        container.add(p);
+        container.add(asc.getAddStudentsPanel());
         layout.next(container);
     }
 }
