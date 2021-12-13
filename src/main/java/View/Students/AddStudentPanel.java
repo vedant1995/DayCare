@@ -311,7 +311,7 @@ public class AddStudentPanel extends javax.swing.JPanel {
         Component[] componentArray = container.getComponents();
         Component component = componentArray[componentArray.length - 1];
         StudentsPanel spanel = (StudentsPanel) component;
-        spanel.populateTable();        
+        // spanel.populateTable();        
     }//GEN-LAST:event_backButtonActionPerformed
 
 
