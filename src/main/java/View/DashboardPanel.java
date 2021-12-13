@@ -5,6 +5,7 @@
  */
 package View;
 
+import Business.DB4OUtil.DB4OUtil;
 import View.Students.StudentsPanel;
 import Controller.ImageHelper;
 import Model.Admin;
@@ -12,6 +13,7 @@ import Model.School;
 import View.Classrooms.ClassroomsPanel;
 import View.Students.RegistrationPanel;
 import View.Teachers.TeachersPanel;
+import com.db4o.Db4o;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Image;
@@ -38,6 +40,7 @@ public class DashboardPanel extends javax.swing.JPanel {
     private School school;
     private Admin admin;
     private Map<JButton, String> buttonIconMap = new HashMap<>();
+    private DB4OUtil db4o = DB4OUtil.getInstance();
 
     /**
      * Creates new form DashboardPanel
@@ -264,6 +267,7 @@ public class DashboardPanel extends javax.swing.JPanel {
         mainContainer.remove(this);
         CardLayout layout = (CardLayout) mainContainer.getLayout();
         layout.previous(mainContainer);
+        db4o.storeSystem(school);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void studentsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentsButtonActionPerformed
