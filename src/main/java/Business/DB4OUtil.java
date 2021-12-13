@@ -10,8 +10,7 @@ import java.nio.file.Paths;
 
 /**
  *
- * @author rrheg
- * @author Lingfeng
+ * @author vedan
  */
 public class DB4OUtil {
 
