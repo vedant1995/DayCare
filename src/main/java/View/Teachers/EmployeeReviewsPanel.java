@@ -67,7 +67,10 @@ public class EmployeeReviewsPanel extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1100, 700));
 
         reviewTextArea.setColumns(20);
+        reviewTextArea.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         reviewTextArea.setRows(5);
+        reviewTextArea.setText("\n");
+        reviewTextArea.setMargin(new java.awt.Insets(5, 20, 20, 5));
         jScrollPane1.setViewportView(reviewTextArea);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
