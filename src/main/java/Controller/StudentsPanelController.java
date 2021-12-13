@@ -5,6 +5,7 @@
  */
 package Controller;
 
+import Helper.ImageHelper;
 import Model.AbstractPerson;
 import Model.Classroom;
 import Model.School;

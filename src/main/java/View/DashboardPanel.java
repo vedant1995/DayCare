@@ -5,10 +5,10 @@
  */
 package View;
 
-import Business.DB4OUtil.DB4OUtil;
+import Helper.DB4OUtil;
 import Controller.ClassroomsPanelController;
 import View.Students.StudentsPanel;
-import Controller.ImageHelper;
+import Helper.ImageHelper;
 import Controller.StudentsPanelController;
 import Model.Admin;
 import Model.School;

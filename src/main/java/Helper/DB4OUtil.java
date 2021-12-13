@@ -1,4 +1,4 @@
-package Business.DB4OUtil;
+package Helper;
 
 import Model.School;
 import com.db4o.Db4oEmbedded;
