@@ -6,6 +6,7 @@
 package View;
 
 import Business.DB4OUtil.DB4OUtil;
+import Controller.ClassroomsPanelController;
 import View.Students.StudentsPanel;
 import Controller.ImageHelper;
 import Controller.StudentsPanelController;
@@ -290,9 +291,9 @@ public class DashboardPanel extends javax.swing.JPanel {
 
     private void classroomsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_classroomsButtonActionPerformed
         // TODO add your handling code here:
-        ClassroomsPanel rp = new ClassroomsPanel(dashboardContainer, school);
+        ClassroomsPanelController cpc = new ClassroomsPanelController(dashboardContainer, school);        
         CardLayout layout = (CardLayout) dashboardContainer.getLayout();
-        dashboardContainer.add(rp);
+        dashboardContainer.add(cpc.getClassroomsPanel());
         layout.next(dashboardContainer);
     }//GEN-LAST:event_classroomsButtonActionPerformed
 
